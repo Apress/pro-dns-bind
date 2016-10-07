@@ -1,0 +1,8 @@
+example.com.        IN      DNSKEY 256    3        254 (1.3.6.1.4.1.X.22.55.4.3
+                          AQPSKmynfzW4kyBv015MUG2DeIQ3
+                          Cbl+BBZH4b/0PY1kxkmvHjcZc8no
+                          kfzj31GajIQKY+5CptLr3buXA10h
+                          WqTkF7H6RfoRqXQeogmMHfpftf6z
+                          Mv1LyBUgia7za6ZEzOJBOztyvhjL
+                          742iU/TpPSEDhm2SNKLijfUppn1U
+                          aNvv4w==  )

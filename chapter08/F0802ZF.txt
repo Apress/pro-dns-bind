@@ -1,0 +1,37 @@
+; zone fragment for 'zone name' example.com
+$TTL 2d     ; default TTL is 2 days
+$ORIGIN example.com.
+@        .  IN      SOA   ns1.example.com. hostmaster.example.com. (
+               2003080800 ; serial number
+               12h         ; refresh =  12 hours
+               15m        ; update retry = 15 minutes
+               3w12h      ; expiry = 3 weeks + 12 hours
+               2h20m      ; minimum = 2 hours + 20 minutes
+               )
+; main domain name servers
+              IN      NS     ns1.example.com.
+              IN      NS     ns2.example.com.
+; mail domain mail servers
+              IN      MX      mail.example.com.
+; A records for preceding name servers 
+ns1           IN      A      192.168.0.3
+ns2           IN      A      192.168.0.4
+; A record for preceding mail server
+mail          IN      A      192.168.0.5
+....
+; subdomain definitions in the same zone file
+; $ORIGIN directive simplifies and clarifies definitions
+$ORIGIN us.example.com. ; all subsequent RRs use this ORIGIN
+; two name servers for the subdomain
+@             IN      NS     ns3.us.example.com.
+; the preceding record could have been written without the $ORIGIN as
+; us.example.com. IN NS ns3.us.example.com.
+; or @         IN    NS ns3
+; the second name server points back to preceding ns1 
+                   IN    NS    ns1.example.com.
+; A records for name server ns3 required - the glue record
+ns3           IN      A      10.10.0.24 ; glue record
+; the preceding record could have been written as
+; ns3.us.example.com. A 10.10.0.24 if it's less confusing
+
+

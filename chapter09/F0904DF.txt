@@ -1,0 +1,28 @@
+# Start of rndc.conf
+key "ns1.example.com" {
+   algorithm hmac-md5;
+   secret "tRNNxQ240B7Gwc/XhS+VLQ==";
+};
+
+options {
+   default-key "ns1.example.com";
+   default-server 192.168.2.3;
+   default-port 3396;
+};
+# End of rndc.conf
+
+# Use with the following in named.conf, adjusting the allow list as needed:
+# key "ns1.example.com" {
+#    algorithm hmac-md5;
+#   secret "tRNNxQ240B7Gwc/XhS+VLQ==";
+# };
+#
+# controls {
+#    inet 192.168.2.3 port 3396
+#    allow { 192.168.2.3; } keys { "ns1.example.com"; };
+# };
+# End of named.conf
+
+
+
+

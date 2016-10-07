@@ -1,0 +1,13 @@
+; zone file fragment for example.com
+$ORIGIN example.org.
+           IN  MX 10 mail.example.com.
+....
+; SPF records
+; domain SPF
+@          IN  TXT   "v=spf1 exists:%(d) -all ext=badguy.example.com"
+badguy     IN   TXT  ( "The email from %(s) using SMTP server at %(i) was rejected
+                   by %(c) (%(r)) at %(t) 
+                   because it failed the SPF records check for the domain %(p).
+                  Please visit http://abuse.example.com/badguys.html for more information")
+
+

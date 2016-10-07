@@ -1,0 +1,8 @@
+$ORIGIN us.example.com.
+...
+mail       IN      A   192.168.35.15
+; expands to mail.us.example.com.
+$INCLUDE sub.example.com ; no $ORIGIN
+; $ORIGIN reverts to value before the $INCLUDE directive
+ftp        IN      A   192.168.35.16
+; expands to ftp.us.example.com

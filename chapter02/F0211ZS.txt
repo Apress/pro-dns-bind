@@ -1,0 +1,5 @@
+ns1           IN      A       192.168.254.2
+mail          IN      A       192.168.254.3
+joe           IN      CNAME   www.example.com.
+www           IN      CNAME   mail.example.com.
+

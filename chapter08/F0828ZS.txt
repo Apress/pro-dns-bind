@@ -1,0 +1,17 @@
+; zone fragment for example.com
+$TTL 2d ; zone ttl default = 2 days
+$ORIGIN example.com.
+....
+; SOA NS MX and other records
+
+; define an IP that will resolve example.com
+@                IN      A      192.168.0.3
+; you could also write the preceding line as
+; example.com.   IN      A      192.168.0.3
+www              IN      CNAME  example.com. ; dot essential
+; aliases www.example.com to example.com
+; OR define another A record for www using same host
+; this is the least number of changes and saves a CNAME
+www              IN      A      192.168.0.3
+
+

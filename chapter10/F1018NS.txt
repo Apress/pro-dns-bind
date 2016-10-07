@@ -1,0 +1,35 @@
+// named.conf fragment
+logging{
+    channel normal_log {
+    file "/var/log/named/normal.log" versions 3 size 2m;
+    severity error;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    channel dnssec_log { // streamed dnssec log
+    file "/var/log/named/dnssec.log" versions 3 size 2m;
+    severity debug 3;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category default{
+    normal_log;
+    };
+    category dnssec{
+    dnssec_log; 
+    };
+};
+options {
+   ....
+   directory "/var/named";
+   dnssec-enable yes;
+   ....
+};
+....
+zone "example.com" IN{
+   type master;
+   file master.example.com;
+   update-policy {grant update.example.com subdomain example.com ANY};
+}; 

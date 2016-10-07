@@ -1,0 +1,29 @@
+$TTL 86400 ; 1 day
+$ORIGIN example.com.
+@            IN SOA ns1.example.com. hostmaster.example.com. (
+                        2005032902 ; serial
+                        10800      ; refresh (3 hours)
+                        15         ; retry (15 seconds)
+                        604800     ; expire (1 week)
+                        10800      ; minimum (3 hours)
+                        )
+            IN  NS ns1.example.com.
+            IN  NS ns2.example.com.
+            IN  MX 10 mail.example.com.
+            IN  MX 10 mail1.example.com.
+_ldap._tcp   IN  SRV 5 2 235 www
+ns1         IN  A  192.168.2.6
+ns2         IN  A  192.168.23.23
+www         IN  A  10.1.2.1
+            IN  A  172.16.2.1
+mail        IN  A  192.168.2.3
+mail1       IN  A  192.168.2.4
+$ORIGIN sub.example.com.
+@           IN  NS ns3.sub.example.com.
+            IN  NS ns4.sub.example.com.
+ns3         IN  A  10.2.3.4 ; glue RR
+ns4         IN  A  10.2.3.5 ; glue RR
+$INCLUDE keys/Kexample.com.+005+12513.key ; current KSK
+$INCLUDE keys/Kexample.com.+005+50148.key ; new KSK
+$INCLUDE dsset-sub.example.com. ; DS RR
+$INCLUDE keys/Kexample.com.+005+39539.key ; new ZSK

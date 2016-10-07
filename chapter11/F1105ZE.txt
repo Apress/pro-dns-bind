@@ -1,0 +1,95 @@
+; File written on Mon Apr 18 10:48:29 2005
+; dnssec_signzone version 9.3.0
+example.com.  86400 IN SOA ns1.example.com. hostmaster.example.com. (
+                        2005032902 ; serial
+                        10800      ; refresh (3 hours)
+                        15         ; retry (15 seconds)
+                        604800     ; expire (1 week)
+                        10800      ; minimum (3 hours)
+                        )
+              86400 RRSIG SOA 5 2 86400 20050518134829 (
+                          20050418134829 3977 example.com.
+                          Pcj36/iCWbY+9/sq9Dw7+QaeRbs= )
+              86400 NS ns1.example.com.
+              86400 NS ns2.example.com.
+              86400 RRSIG NS 5 2 86400 20050518134829 (
+                          20050418134829 3977 example.com.
+                          6sfpgAuKarGSbhN3elYozOaBU6c= )
+              86400 MX 10 mail.example.com.
+              86400 MX 10 mail1.example.com.
+              86400 RRSIG MX 5 2 86400 20050518134829 (
+                          20050418134829 3977 example.com.
+                          2y4QQlM7+Rs039wLaxA/I+69d38= )
+              10800 NSEC ldap._tcp.example.com. (NS SOA MX
+                                      RRSIG NSEC DNSKEY)
+              10800 RSIG NSEC 5 2 10800 20050518134829 (
+                        20050418134829 3977 example.com.
+                        k4T48nVQVZuPBW3aQ0BhlQmYP6c= )
+              86400 DNSKEY 256 3 5 (
+                        t/4w8JgeybiVZeHbYXHIljS0kHt8vw==
+                        ) ; key id = 3977
+              86400 DNSKEY 257 3 5 (
+                        1WnVhGKV1I6T01x+u4uNoe1/uocNOQ==
+                        ) ; key id = 12513
+              86400 RRSIG DNSKEY 5 2 86400 20050518134829 (
+                        20050418134829 3977 example.com.
+                        ihcz6BqjNRBFk4vCSGjS2UWdx7M= )
+              86400 RRSIG DNSKEY 5 2 86400 20050518134829 (
+                        20050418134829 12513 example.com.
+                        vv2TqynHfZI8I9GA9zpyd+y/54M= )
+_ldap._tcp.example.com . 86400 IN SRV 5 2 235 www.example.com.
+              86400 RRSIG SRV 5 4 86400 20050518134829 (
+                        4hzYqMuD+YfCe6CYijkvxaK2AI8= )
+              10800 NSEC mail.example.com. SRV RRSIG NSEC
+              10800 RRSIG NSEC 5 4 10800 20050518134829 (
+                        20050418134829 3977 example.com.
+                        8q0gADAR86IvfVUT7eXtRbXhyQg= )
+mail.example.com. 86400 IN A 192.168.2.3
+              86400 RRSIG A 5 3 86400 20050518134829 (
+                        20050418134829 3977 example.com.
+                        ntx8VinqRDuVGdLv6j1aTZPk26c= )
+              10800 NSEC mail1.example.com. A RRSIG NSEC
+              10800 RRSIG NSEC 5 3 10800 20050518134829 (
+                        20050418134829 3977 example.com.
+                        bsjUM4szz6k1kJj1eASDVh+PPdc= )
+mail1.example.com. 86400 IN A 192.168.2.4
+              86400 RRSIG A 5 3 86400 20050518134829 (
+                        20050418134829 3977 example.com.
+                        s5jnGdHV0zLEN9OooydL5QOq6Bg= )
+              10800 NSEC ns1.example.com. A RRSIG NSEC
+              10800 RRSIG NSEC 5 3 10800 20050518134829 (
+                        20050418134829 3977 example.com.
+                        /Ca0z+gPDCxpgXp9vVBwoCDZyNs= )
+ns1.example.com. 86400 IN A 192.168.2.6
+              86400 RRSIG A 5 3 86400 20050518134829 (
+                        20050418134829 3977 example.com.
+                        WLwY0eMj29hoehng6Q8MOqP/Fps= )
+              10800 NSEC ns2.example.com. A RRSIG NSEC
+              10800 RRSIG NSEC 5 3 10800 20050518134829 (
+                        20050418134829 3977 example.com.
+                        iUm0ZtFd2tlB1kCGd03TWHA6XLE= )
+ns2.example.com. 86400 IN A 192.168.23.23
+              86400 RRSIG A 5 3 86400 20050518134829 (
+                        20050418134829 3977 example.com.
+                        D5g1Bc235ra+kcgdLy0i5o0xyKs= )
+              10800 NSEC sub.example.com. A RRSIG NSEC
+              10800 RRSIG NSEC 5 3 10800 20050518134829 (
+                        20050418134829 3977 example.com.
+                        KrYgcGOtK2EZkbMBpedYBjVLVwE= )
+sub.example.com. 86400 IN NS ns3.sub.example.com.
+                 86400 IN NS ns4.sub.example.com.
+               10800 NSEC www.example.com. NS RRSIG NSEC
+               10800 RRSIG NSEC 5 3 10800 20050518134829 (
+                        20050418134829 3977 example.com.
+                        lwTngtzMsECH+ZsOqza0d8mxORE= )
+ns3.sub.example.com. 86400 IN A 10.2.3.4
+ns4.sub.example.com. 86400 IN A 10.2.3.5
+www.example.com. 86400 IN A 10.1.2.1
+              86400 IN A 172.16.2.1
+              86400 RRSIG A 5 3 86400 20050518134829 (
+                        20050418134829 3977 example.com.
+                        5djR2cKlFB5XUU4uT92hFWGfsKE= )
+              10800 NSEC example.com. A RRSIG NSEC
+              10800 RRSIG NSEC 5 3 10800 20050518134829 (
+                        20050418134829 3977 example.com.
+                        8OcJsjO6zzkINiR2nqLUh2GEbvI= )

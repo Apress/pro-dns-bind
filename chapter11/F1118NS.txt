@@ -1,0 +1,5 @@
+trusted-keys{
+   "example.com." 257 3 5 "1WnVhGKV1I6T01x+u4uNoe1/uocNOQ=="; // old KSK
+   "example.com." 257 3 5 "AQPZjeWTe9q9980o2XWmaaMYNb9xxMDdwHNH
+                  waQ5CQ6tVQwg5udwmnWTJt5ryBI+DQ=="; // new KSK
+};

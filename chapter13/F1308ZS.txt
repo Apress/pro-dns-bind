@@ -1,0 +1,6 @@
+; INCLUDE file statements
+$ORIGIN uk.example.com.
+www       IN       A  192.168.23.15
+; expands to www.uk.example.com
+...
+; end of included file

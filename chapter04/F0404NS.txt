@@ -1,0 +1,11 @@
+// options clause fragment of named.conf
+// forwarders can have multiple choices
+options {
+               forwarders {10.0.0.1; 10.0.0.2;};
+               forward only;
+};
+// zone file sectionsclauses
+....
+
+
+

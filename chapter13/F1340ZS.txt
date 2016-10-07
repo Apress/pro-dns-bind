@@ -1,0 +1,12 @@
+; reverse zone file fragment for example.com
+$TTL 2d ; zone TTL default = 2 days or 172800 seconds
+$ORIGIN 3.3.1.e.1.0.0.0.0.0.0.0.0.0.a.5.0.0.0.8.5.0.0.0.7.4.NSAP.INT.
+example.com. IN       SOA   ns1.example.com. hostmaster.example.com. (
+               2003080800 ; serial number
+               3h         ; refresh =  3 hours
+               15M        ; update retry = 15 minutes
+               3W12h      ; expiry = 3 weeks + 12 hours
+               2h20M      ; minimum = 2 hours + 20 minutes
+               )
+....
+0.0.1.6.1.0.0.0.f.f.f.f.f.f  IN    PTR  fred.example.com.

@@ -1,0 +1,6 @@
+; zone file fragment for example.com
+             MX  10   mail1.example.com.
+             MX  10   mail2.example.com.
+             MX  20   mail3.example.com.
+
+

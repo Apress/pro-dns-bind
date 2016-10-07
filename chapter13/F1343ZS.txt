@@ -1,0 +1,22 @@
+; reverse IPV6 zone file for example.com
+$TTL 2d    ; default TTL for zone
+$ORIGIN 0.0.0.0.8.b.d.0.1.0.0.2.IP6.ARPA.
+@         IN      SOA   ns1.example.com. hostmaster.example.com. (
+                        2003080800 ; sn = serial number
+                        12h         ; refresh = refresh
+                        15m        ; retry = update retry
+                        3w         ; expiry = expiry
+                        2h         ; min = minimum
+                        )
+; name servers Resource Recordsfor the domain
+          IN      NS      ns1.example.com.
+; the second name servers is
+; external to this zone (domain).
+          IN      NS      ns2.example.net.
+; PTR RR maps a IPv6 address to a host name
+; hosts in subnet ID 1
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0         IN      PTR     ns1.example.com.
+2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0         IN      PTR     mail.example.com.
+; hosts in subnet ID 2
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.0.0.0         IN      PTR     joe.example.com.
+2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.0.0.0         IN      PTR     www.example.com.

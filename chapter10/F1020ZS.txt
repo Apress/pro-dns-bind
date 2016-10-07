@@ -1,0 +1,14 @@
+; example.com zone file fragment 
+$TTL 2d ; zone TTL default of 2 days
+$ORIGIN example.com.
+....
+bill   IN  A   192.168.2.3
+       IN  TXT "one fine day"
+       IN  RP  bill.example.com. .
+$INCLUDE keys/Kbill.example.com.+001+77325.key ; bill KEY RR
+fred   IN  A   192.168.2.4
+       IN  RP  fred.example.com. .
+       IN  AAAA 2001:db8::15
+$INCLUDE keys/Kfred.example.com.+001+08634.key ; fred KEY RR
+....
+

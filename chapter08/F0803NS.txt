@@ -1,0 +1,6 @@
+// named.conf file fragment for the subdomain us.example.com
+
+zone "us.example.com" in{
+                type master;
+                file "master.us.example.com";
+};

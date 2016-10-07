@@ -1,0 +1,6 @@
+// named.conf fragment at example.com
+// revised reverse-map zone name
+zone "64/26.199.168.192.IN-ADDR.ARPA" in{
+                type master;
+                file "192.168.23.rev";
+};

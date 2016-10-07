@@ -1,0 +1,5 @@
+; INCLUDE file statements
+www       IN       A  192.168.23.15
+; expands to www.us.example.com
+...
+; end of included file

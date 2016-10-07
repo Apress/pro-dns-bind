@@ -1,0 +1,16 @@
+// zone file example.com
+$ORIGIN example.com.
+lots     IN  A  192.168.3.6
+         IN  A  192.168.4.5
+         IN  A  192.168.5.5
+         IN  A  10.2.4.5
+         IN  A  172.17.4.5
+
+
+
+
+
+
+
+
+

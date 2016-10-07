@@ -1,0 +1,7 @@
+; reverse-map file fragment
+; for 0.168.192.IN-ADDR.ARPA
+....
+4           PTR      mail.example.com.
+5           PTR      mail.example.com.
+6           PTR      mail.example.com.
+

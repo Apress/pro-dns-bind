@@ -1,0 +1,13 @@
+// named.conf fragment
+zone "example.com" in {
+    type master;
+    ...
+    // permit transfer
+    allow-transfer 192.168.254.4;
+};
+
+
+
+
+
+

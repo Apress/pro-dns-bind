@@ -1,0 +1,40 @@
+//defining acls
+// simple ip address acl
+acl "someips" {
+  10.0.0.1; 192.168.23.1; 192.168.23.15;
+};
+// ip address acl with '/' format
+ acl "moreips" {
+  10.0.0.2;
+  192.168.23.128/25; // 128 IPs
+};
+// nested acl
+acl "allips" {
+  "someips";
+  "moreips";
+};
+// messy acl
+acl "complex" {
+  "someips";
+  10.0.15.0/24;
+  !10.0.16.1/24; // negated
+  {10.0.17.1;10.0.18.2;}; // nested
+ };
+view "my stuff" {
+    match-clients {"someips";};
+    ....
+};
+// using acls
+zone "example.com" {
+  type master;
+  file "master.example.com";
+  also-notify {"allips";};
+};
+zone "example.net" {
+  type slave;
+  masters {192.168.2.3;192.168.2.4;};
+  file "slave.example.net;
+  allow-transfer {"none";}; // this is a special acl
+};
+
+

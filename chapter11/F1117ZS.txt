@@ -1,0 +1,4 @@
+         86400 DNSKEY 257 3 5 (
+                  AQPZjeWTe9q9980o2XWmaaMYNb9xxMDdwHNH
+                  waQ5CQ6tVQwg5udwmnWTJt5ryBI+DQ==
+                  ) ; key id = 50148

@@ -1,0 +1,8 @@
+; fragment from zone file showing use of $INCLUDE
+....
+; other domain-level hosts and services
+bill          IN      A      192.168.0.5
+....
+; subdomain definitions
+$INCLUDE sub.us.example.com
+; other subdomain definitions as required

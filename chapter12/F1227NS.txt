@@ -1,0 +1,23 @@
+options {
+....
+    also-notify {10.1.0.15; 172.28.32.7;}; // all zones
+....
+};
+....
+zone "example.com in{
+....
+    // NS RRs and global  also-notify
+    // default behavior so could have been omitted
+    notify yes;
+....
+};
+zone "example.net in{
+....
+    // no NOTIFY to NS RRs
+    // NOTIFY to global also-notify IPs
+    notify explicit;
+....
+};
+
+
+

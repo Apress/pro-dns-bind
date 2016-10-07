@@ -1,0 +1,24 @@
+options {
+....
+    // turns on IPv6 for port 53
+    listen-on-v6 {any;};
+};
+options {
+....
+    // turns off IPv6
+    listen-on-v6 {none;};
+};
+
+options {
+....
+    // turns on IPv6 for port 53 for 16 IP range
+    listen-on-v6 {2001:db8::/124;};
+};
+
+
+
+
+
+
+
+

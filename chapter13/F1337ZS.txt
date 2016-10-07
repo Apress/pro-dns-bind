@@ -1,0 +1,14 @@
+; zone fragment for example.com
+; name servers not in the zone
+$TTL 2d ; default TTL is 2 days
+$ORIGIN example.com.
+example.com.  IN     SOA   ns1.example.net. hostmaster.example.com. (
+               2003080800 ; serial number
+               3h         ; refresh =  3 hours
+               15M        ; update retry = 15 minutes
+               3W12h      ; expiry = 3 weeks + 12 hours
+               2h20M      ; minimum = 2 hours + 20 minutes
+               )
+; name servers not in zone - no A records required
+               IN      NS     ns1.example.net.
+               IN      NS     ns2.example.net.

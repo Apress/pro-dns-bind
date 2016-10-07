@@ -1,0 +1,21 @@
+$TTL 2d ; zone default = 2 days
+$ORIGIN 64/26.199.168.192.IN-ADDR.ARPA.
+@            IN  SOA   ns1.example.com. hostmaster.example.com. (
+                              2003080800 ; serial number
+                              2h         ; refresh
+                              15m        ; update retry
+                              2w         ; expiry
+                              3h         ; minimum
+                              )
+              IN  NS      ns1.example.com.
+              IN  NS      ns2.example.com.
+; IPs addresses in the subnet - all need to be defined
+; except 64 and 127 since they are the subnets multicast
+; and broadcast addresses not hosts/nodes
+65            IN  PTR   fred.example.com. ;qualified
+66            IN  PTR   joe.example.com.
+67            IN  PTR   bill.example.com.
+....
+125           IN  PTR   web.example.com.
+126           IN  PTR   ftp.example.com.
+; end of 192.168.23.64/26 subnet

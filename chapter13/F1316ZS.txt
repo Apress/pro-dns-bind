@@ -1,0 +1,9 @@
+; zone fragment for example.com
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+....
+
+www        IN      A      192.168.0.3
+mail       IN      A      192.168.0.32
+www        IN      AAAA      2001:db8::3
+mail       IN      AAAA      2001:db8::32

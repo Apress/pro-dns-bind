@@ -1,0 +1,16 @@
+// named.conf fragment
+acl "rndc-users" {
+     10.0.15.0/24;
+     !10.0.16.1/24; // negated
+     2001:db8:0:27::/64; // any address in subnet
+ };
+....
+key "rndc-remote" {
+     algorithm hmac-md5;
+     secret "OmItW1lOyLVUEuvv+Fme+Q==";
+};
+controls {
+     // local host - default key
+     inet 127.0.0.1 allow {localhost;};
+     inet * port 7766 allow {"rndc-users";} keys {"rndc-remote";};
+};

@@ -1,0 +1,8 @@
+; zone fragment for example.com
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+....
+www        IN      A      192.168.0.3
+           IN      SSHFP  1 1 (AABB12AA334477
+                                CD1234a57890)
+....

@@ -1,0 +1,10 @@
+acl "good-guys" {
+     !192.169.2.5/28; // denies first 16 IPs
+     192.168.2.5/24;  // allows rest of subnet
+     localnets;   // allows our network
+     2001:db8:0:1::/64; // allows this subnet only
+};
+options {
+      allow-transfer {"good-guys";};
+};
+

@@ -1,0 +1,2 @@
+; the IN-ADDR.ARPA zone file defines mail not www
+4             IN      PTR     mail.example.com.

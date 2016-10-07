@@ -1,0 +1,38 @@
+// named.conf fragment for ns2.example.com
+logging{
+    channel normal_log {
+    file "/var/log/named/normal.log" versions 3 size 2m;
+    severity error;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    channel dnssec_log { // streamed dnssec log
+    file "/var/log/named/dnssec.log" versions 3 size 2m;
+    severity debug 3;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category default{
+    normal_log;
+    };
+    category dnssec{
+    dnssec_log;
+    };
+};
+options {
+   ....
+   directory "/var/named";
+   dnssec-enable yes;
+   allow-transfer {"none"};
+   allow-update {"none";};
+   ....
+};
+....
+zone "example.com" in{
+   type slave;
+   file "slave.example.com.signed";
+   masters {192.168.2.6;}; // ns1.example.com
+};
+....

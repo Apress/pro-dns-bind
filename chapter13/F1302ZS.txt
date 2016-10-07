@@ -1,0 +1,11 @@
+$ORIGIN example.com.
+; unqualified names from here will append example.com.
+www              IN  A 192.168.2.2 ; unqualified
+; www expands to www.example.com.
+...
+ftp.example.com. IN A 192.168.2.3 ; FQDN
+...
+$ORIGIN us.example.com.
+; unqualified names from here will append us.example.com.
+www              IN  A 192.168.254.2 ; unqualified
+; www expands to www.us.example.com.

@@ -1,0 +1,19 @@
+; zone fragment for dlv.example.com
+$TTL 1d ; zone default
+$ORIGIN dlv.example.com.
+@        IN SOA ns1.dlv.example.com. hostmaster.dlv.example.com. (
+                   2005032902 ; serial
+                   10800      ; refresh (3 hours)
+                   15         ; retry (15 seconds)
+                   604800     ; expire (1 week)
+                   10800      ; minimum (3 hours)
+                   )
+            NS ns1.dlv.example.com.
+            NS ns2.dlv.example.com.
+ns1         A  192.168.254.2
+ns2         A  192.168.254.3
+; DLV RRs for affinity group
+example.com.dlv.example.com. IN DLV 37558 5 1 (CCCCCCCCCCCC)
+example.org.dlv.example.com. IN DLV 42134 5 1 (DDDDDDDDDDD)
+example.net.dlv.example.com. IN DLV 02557 5 1 (EEEEEEEEEEEEE)
+....

@@ -1,0 +1,13 @@
+// named.conf file fragment
+
+zone "example.com" in{
+                type master;
+                file "master.example.com";
+};
+// optional - example.com acts as the slave (secondary) for the delegated subdomain
+zone "us.example.com" IN {
+                type slave;
+                file "slave.us.example.com";
+                masters {10.10.0.24;};
+};
+

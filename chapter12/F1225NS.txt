@@ -1,0 +1,22 @@
+// named.conf fragment
+key "update-key" {
+    ....
+};
+zone "example.net" in{
+    type master;
+    allow-update {none;}; // no DDNS by default
+    ....
+};
+....
+zone "example.com in{
+....type master;
+    allow-update {10.0.1.2;}; // DDNS this host only
+    ....
+};
+zone "example.org" in {
+    type master;
+    allow-update {keys "update-key";};
+    ....
+};
+
+

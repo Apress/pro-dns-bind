@@ -1,0 +1,29 @@
+; zone file for subdomain us.example.com
+$TTL 2d ; zone default of 2 days
+$ORIGIN us.example.com.
+         IN     SOA   ns3.us.example.com. hostmaster.us.example.com. (
+         2003080800 ; serial number
+         2h         ; refresh =  2 hours
+         15m        ; update retry = 15 minutes
+         3w12h      ; expiry = 3 weeks + 12 hours
+         2h20m      ; minimum = 2 hours + 20 minutes
+         )
+; subdomain name servers
+                  IN      NS     ns3.us.example.com.
+                  IN      NS     ns1.example.com. ; see following notes
+; subdomain mail server
+                  IN      MX 10  mail.us.example.com.
+; preceding record could have been written as
+;                 IN      MX 10  mail
+; A records for preceding name servers
+ns3               IN      A      10.10.0.24
+ns1.example.com.  IN      A      192.168.0.3 ; 'glue' record
+; A record for preceding mail server
+mail              IN      A      10.10.0.25
+; next record defines our ftp server
+ftp               IN      A      10.10.0.28
+; the preceding record could have been written as
+; ftp.us.example.com. A 10.10.0.24 if it's less confusing
+
+; other subdomain records
+

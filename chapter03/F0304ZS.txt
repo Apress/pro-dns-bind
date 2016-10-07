@@ -1,0 +1,2 @@
+ns1           IN      A       192.168.254.2
+www           IN      CNAME   ns1.example.com.

@@ -1,0 +1,8 @@
+// rndc.conf fragment
+server "ns1.example.net" {
+   key "ns1.example.net";
+   port 953;
+};
+
+
+

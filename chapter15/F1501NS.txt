@@ -1,0 +1,10 @@
+// named.conf fragment
+options {
+     ....
+     forward only;
+     forwarders {192.168.2.3;};
+};
+server 192.168.2.3 {
+     edns yes;
+};
+....

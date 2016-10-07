@@ -1,0 +1,5 @@
+// included acl
+ acl "private-acl" {
+  10.0.0.1;
+  192.168.23.128/25; // 128 IPs
+};

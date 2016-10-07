@@ -1,0 +1,46 @@
+// Forwarding & Caching Name Server for Example, INC.
+// Recommended that you always maintain a change log in this file as shown here
+// CHANGELOG:
+// 1. 9 july 2005 INITIALS or NAME
+//  a. did something
+// a. 23 july 2005 INITIALS or NAME
+//  a. did something more
+//  b. another change
+//
+options {
+  // all relative paths use this directory as a base
+  directory "/var/named";
+  // version statement for security to avoid hacking known weaknesses
+  version "not currently available";
+  // configuration specfic options statements
+  forwarders {10.0.0.1; 10.0.0.2;};
+  forward only;
+  // disables all zone transfer requests
+  allow-transfer{"none"};
+  // turn off recursion
+  recursion no;
+};
+// log to /var/log/example.log all events from info UP in severity (no debug)
+// defaults to use 3 files in rotation
+// failure messages up to this point are in (syslog) /var/log/messages
+  logging{
+  channel example_log{
+   file "/var/log/named/example.log" versions 3 size 250k;
+   severity info;
+ };
+  category default{
+  example_log;
+ };
+};
+// required local host domain
+zone "localhost" in{
+  type master;
+  file "master.localhost";
+  allow-update{none;};
+};
+// localhost reverse map
+zone "0.0.127.IN-ADDR.ARPA" in{
+  type master;
+  file "localhost.rev";
+  allow-update{none;};
+};

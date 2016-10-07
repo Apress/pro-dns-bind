@@ -1,0 +1,6 @@
+// named.conf fragment
+options {
+// other options
+            rrset-order {order cyclic;};
+};
+

@@ -1,0 +1,6 @@
+// example.com fragment from named.conf
+// defines this server as a zone master for example.com
+zone "example.com" in{
+      type master;
+      file "master.example.com";
+};

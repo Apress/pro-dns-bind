@@ -1,0 +1,48 @@
+// named.conf example.com master fragment
+logging{
+    channel normal_log {
+    file "/var/log/named/normal.log" versions 3 size 2m;
+    severity error;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    channel dnssec_log { // streamed dnssec log
+    file "/var/log/named/dnssec.log" versions 3 size 2m;
+    severity debug 3;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category default{
+    normal_log;
+    };
+    category dnssec{
+    dnssec_log; 
+    };
+};
+options {
+   ....
+   directory "/var/named";
+   dnssec-enable yes;
+   ....
+};
+include "keys/example.com.key"; // include the key clause
+server 10.1.2.3 {
+   keys {"example.com";}; // name used in key clause
+};
+....
+zone "example.com" in{
+   type master;
+   file "master.example.com";
+   allow-update {key "example.com";};
+};
+.... 
+zone "example.net" in{
+   type master;
+   file "master.example.net";
+   update-policy { grant example.com subdomain example.net ANY;};
+   update-policy { grant * self * A;};
+   update-policy { grant fred.example.net name example.net MX;};
+};
+....

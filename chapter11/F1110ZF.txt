@@ -1,0 +1,18 @@
+// named.conf fragment for ns1.example.net
+$TTL 86400 ; 1 day
+$ORIGIN sub.example.com.
+@            IN SOA ns1.sub.example.com. hostmaster.example.com. (
+                     2005032902 ; serial
+                     10800      ; refresh (3 hours)
+                     15         ; retry (15 seconds)
+                     604800     ; expire (1 week)
+                     10800      ; minimum (3 hours)
+                     )
+              IN NS ns3.example.com.
+              IN NS ns4.example.com.
+              IN MX 10 mail.example.com.
+ns3           IN A 10.2.3.4
+ns4           IN A 10.2.3.5
+fred          IN A 10.1.2.1
+$INCLUDE Ksub.example.com.+005+48560.key ; ZSK
+$INCLUDE Ksub.example.com.+005+64536.key ; KSK

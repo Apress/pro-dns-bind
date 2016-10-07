@@ -1,0 +1,13 @@
+// named.conf fragment
+logging{
+    channel single_log {
+    file "/var/log/named/bind.log" versions 3 size 2m;
+    severity info;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category default{
+    single_log;
+    };
+};

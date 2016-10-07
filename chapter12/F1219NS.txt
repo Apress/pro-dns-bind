@@ -1,0 +1,23 @@
+// named.conf fragment
+view "recursive-external" {
+    match-clients {10.2.4.4/24;};
+    match-recursive-only yes;
+    // other view statements
+    zone "example.com" in {
+    ....
+    };
+};
+view "internal" {
+    match-clients {10.2.3.4/24;};
+    match-recursive-only yes;
+    // other view statements
+    zone "example.com" in {
+    ....
+    };
+};
+// definition of zone behavior outside the views
+zone "example.com" in {
+....
+};
+
+

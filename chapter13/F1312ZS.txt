@@ -1,0 +1,15 @@
+; zone fragment for example.com
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+....
+joe        IN      A      192.168.0.3  ; joe & www = same ip
+www        IN      A      192.168.0.3
+; could be rewritten as
+; www.example.com.  A      192.168.0.3
+fred  3600 IN      A      192.168.0.4  ; ttl overrides $TTL default
+ftp        IN      A      192.168.0.5 ; round-robin with next
+           IN      A      192.168.0.6
+mail       IN      A      192.168.0.15  ; mail = round-robin
+mail       IN      A      192.168.0.32
+mail       IN      A      192.168.0.33
+squat      IN      A      10.0.14.13  ; address in another range & class

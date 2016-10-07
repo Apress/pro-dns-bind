@@ -1,0 +1,8 @@
+// rndc.conf fragment
+options {
+   default-server 127.0.0.1;
+   default-key "my-key";
+   default-port 3346;
+};
+
+

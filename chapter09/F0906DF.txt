@@ -1,0 +1,50 @@
+# Start of rndc.conf
+key "ns1.example.com" {
+   algorithm hmac-md5;
+   secret "tRNNxQ240B7Gwc/XhS+VLQ==";
+};
+// moved ns2.example.com key clause
+key "ns2.example.com" {
+   algorithm hmac-md5;
+   secret "oSbqEQ7KVw3PZlisH+g/XQ==";
+};
+
+options {
+   default-key "ns1.example.com";
+   default-server 192.168.2.3;
+   default-port 3396;
+};
+server ns2.example.com {
+   key ns2.example.com;
+   port 953; // required because of default-port in options clause
+};
+# End of rndc.conf
+
+# Use with the following in named.conf, adjusting the allow list as needed:
+# key "ns1.example.com" {
+#    algorithm hmac-md5;
+#    secret "tRNNxQ240B7Gwc/XhS+VLQ==";
+# };
+#
+# controls {
+#    inet 192.168.2.3 port 3396
+#    allow { 192.168.2.3; } keys { "ns1.example.com"; };
+# };
+# End of named.conf
+
+// start of second (appended) rndc.conf file
+# Start of rndc.conf
+// deleted second options clause
+# End of rndc.conf
+
+# Use with the following in named.conf, adjusting the allow list as needed:
+# key "ns2.example.com" {
+#    algorithm hmac-md5;
+#   secret "oSbqEQ7KVw3PZlisH+g/XQ==";
+# };
+#
+# controls {
+#    inet 192.168.2.4 port 953
+#    allow { 192.168.2.4; } keys { "ns2.example.com"; };
+# };
+# End of named.conf

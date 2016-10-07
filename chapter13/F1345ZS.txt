@@ -1,0 +1,16 @@
+; zone file fragment for example.com
+$TTL 2d ; zone TTL default = 2 days or 172800 seconds
+$ORIGIN example.com.
+...
+www          IN  A     192.168.254.2
+             IN  A     192.168.254.3
+             IN  RP    bill.example.com. bill.people.example.com.
+; could have been written as
+;            IN  RP    bill bill.people
+; line that follows uses an e-mail external to the domain
+; and has no corresponding text record (replaced with a single dot)
+             IN  RP    fred.example.net. .
+...
+; all people records organized under people
+bill.people  IN  TXT "Bill Someone - pager = 111-1111"
+....

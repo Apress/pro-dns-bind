@@ -1,0 +1,12 @@
+// named.conf fragment
+zone "example.com" in {
+    type slave;
+    ...
+    // force transfers onto one interface
+    transfer-source 192.168.254.4;
+};
+
+
+
+
+

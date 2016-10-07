@@ -1,0 +1,53 @@
+// Caching Name Server for Example.com. 
+// We recommend that you always maintain a change log in this file as shown below
+// CHANGELOG:
+// 1. 9 july 2005 INITIALS or NAME
+//  a. did something
+// a. 23 july 2005 INITIALS or NAME
+//  a. did something more
+//  b. another change
+//
+options {
+  // all relative paths use this directory as a base
+  directory "/var/named";
+  // version statement for security to avoid hacking known weaknesses 
+  // if the real version number is published
+  version "not currently available";
+  // configuration specific option clause statements
+  // disables all zone transfer requests
+  allow-transfer{"none"};
+  // optional - BIND default behavior is recursion
+  recursion yes;
+};
+//
+// log to /var/log/example.log all events from info UP in severity (no debug)
+// defaults to use 3 files in rotation
+// failure messages up to this point are in (syslog) /var/log/messages
+//
+  logging{
+  channel example_log{
+   file "/var/log/named/example.log" versions 3 size 250k;
+   severity info;
+ };
+  category default{
+  example_log;
+ };
+};
+// required zone for recursive queries
+zone "." {
+  type hint;
+  file "root.servers";
+};
+// required local host domain
+zone "localhost" in{
+  type master;
+  file "master.localhost";
+  allow-update{none;};
+};
+// localhost reverse map
+zone "0.0.127.in-addr.arpa" in{
+  type master;
+  file "localhost.rev";
+  allow-update{none;};
+};
+

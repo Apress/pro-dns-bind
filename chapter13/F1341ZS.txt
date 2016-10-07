@@ -1,0 +1,13 @@
+; zone fragment for example.com
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+....
+mail       IN      A      192,168.2.3
+           IN      AAAA   2001:db8::3
+           IN      TXT "one upon a time"
+           IN      KX   10 bill.example.com.
+           IN      RRSIG
+           IN      NSEC www  (A TXT KX AAAA NSEC RRSIG)
+www        IN      AAAA   2001:db8::4
+           IN      A      192.168.2.4
+           IN      NSEC   @  (A AAAA) ; loops back to SOA

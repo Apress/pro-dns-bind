@@ -1,0 +1,7 @@
+// named.conf fragment
+....
+zone "0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA" in{
+   type master;
+   file "localhost-ipv6.rev";
+   allow-update {"none";};
+};

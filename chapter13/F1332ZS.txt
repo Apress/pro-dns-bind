@@ -1,0 +1,16 @@
+; zone fragment for example.com
+; mail servers in the same zone
+; zone fragment for example.com
+; mail servers not in the zone
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+example.com. IN       SOA   ns1.example.com. root.example.com. (
+               2003080800 ; serial number
+               3h         ; refresh =  3 hours
+               15M        ; update retry = 15 minutes
+               3W12h      ; expiry = 3 weeks + 12 hours
+               2h20M      ; minimum = 2 hours + 20 minutes
+               )
+; mail servers not in zone - no A records required
+               IN     MX     10  mail.example.net.
+               IN     MX     20  mail.example.org.

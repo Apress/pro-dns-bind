@@ -1,0 +1,9 @@
+<VirtualHost 10.10.0.23>
+    ServerAdmin webmaster@example.com
+    DocumentRoot /path/to/web/root
+    ServerName example.com
+    ErrorLog logs/example.err
+    CustomLog logs/example.log common
+</VirtualHost>
+
+

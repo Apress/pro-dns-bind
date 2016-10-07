@@ -1,0 +1,34 @@
+$TTL 86400 ; 1 day
+$ORIGIN example.com.
+@        IN SOA ns1.example.com. hostmaster.example.com. (
+                   2005032902 ; serial
+                   10800      ; refresh (3 hours)
+                   15         ; retry (15 seconds)
+                   604800     ; expire (1 week)
+                   10800      ; minimum (3 hours)
+                   )
+            NS ns1.example.com.
+            NS ns2.example.com.
+            MX 10 mail.example.com.
+            MX 10 mail1.example.com.
+_ldap._tcp  SRV 5 2 235 www
+ns1         A 192.168.2.6
+ns2         A 192.168.23.23
+www         A 10.1.2.1
+            A 172.16.2.1
+mail        A 192.168.2.3
+mail1       A 192.168.2.4
+example.com. IN DNSKEY 257 3 5 (AQPnvgDqCShrBmFEh5vW7k
+                     M4DG/kMwa3EBnPSLAqWRbFOffIWP9ZA2v
+                     cZn5ngUjVZ/1IdOViZBO0FCm63bakNgpQ
+                     4UNH6e4LH8hnTDMyrlw9smNC xLr4ROqL
+                     lcLWDT4ANysDpCZmHUPilvJB1WnVhGKV1
+                     I6T01x+u4uNoe1/ uocNOQ==) ;KSK (SEP)
+example.com. IN DNSKEY 256 3 5 (AQPmYqOH3zNwuX4l2+hkh8U
+                     G1P14Gv8dfCSi6MbEX0N424EX+EIMl400O
+                     OBkep/ZtIRRJ4rfJONPGs8+HWJDMQOapZn
+                     VSYOmSH9V5V32c+j7Gx628y/MyyzwDuT6+
+                     zQ3cbobUKrlzL/PLEHegqIDpGkF2VBWXWH
+                     LDTCJ5nXB sayYeQ==) ; ZSK
+
+

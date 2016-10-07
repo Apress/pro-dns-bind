@@ -1,0 +1,7 @@
+; zone fragment for example.com
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+....
+           IN      MX  10  mail.example.com.
+server1    IN      CNAME   mail
+mail       IN      A      192.168.0.3

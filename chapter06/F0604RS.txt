@@ -1,0 +1,6 @@
+named_chrootdir=""                 # disables jail/sandbox
+named_pidfile="/var/run/named/pid" # Must set this in named.conf as well
+named_chroot_autoupdate="NO"       # Automatically install/update chrooted
+                                   # components of named. See /etc/rc.d/named.
+named_symlink_enable="NO"           # Symlink the chrooted pid file
+

@@ -1,0 +1,33 @@
+; IPv4 zone file for example.com
+$TTL 2d    ; default TTL for zone
+$ORIGIN example.com. ; base domain-name
+; Start of Authority record RR defining the key characteristics
+; of the zone (domain)
+@         IN      SOA   ns1.example.com. hostmaster.example.com. (
+                        2003080800 ; se = serial number
+                        12h         ; ref = refresh
+                        15m        ; ret = update retry
+                        3w         ; ex = expiry
+                        2h         ; min = minimum
+                        )
+; name servers RRs for the domain
+              IN      NS      ns1.example.com.
+; the second name server is
+; external to this zone (domain).
+              IN      NS      ns2.example.net.
+; mail server RRs for the zone (domain)
+; value 10 in this case denotes it is the most preferred
+     3w       IN      MX  10  mail.example.com.
+; the second mail server has lower preference (20) and is
+; external to the zone (domain)
+              IN      MX  20  mail.example.net.
+; domain hosts includes NS and MX records RRs defined previously
+; plus any others required
+ns1           IN      A       192.168.254.2
+mail          IN      A       192.168.254.4
+; web and publically visible host called joe
+joe           IN      A       192.168.254.6
+www           IN      A       192.168.254.7
+; aliases ftp (ftp server) to an external location
+ftp           IN      CNAME   ftp.example.net.
+

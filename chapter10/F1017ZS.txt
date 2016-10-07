@@ -1,0 +1,7 @@
+; example.com zone file fragment 
+$TTL 2d ; zone TTL default of 2 days
+$ORIGIN example.com.
+....
+$INCLUDE keys/Kupdate.example.com.+001+00706.key
+....
+

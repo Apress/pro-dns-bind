@@ -1,0 +1,13 @@
+// named.conf fragment
+zone "example.com" in {
+    type slave;
+    // defines an optional file used to save slave zone data
+    file "slave.example.com";
+    ...
+};
+zone "example.net" in {
+    type master;
+    // defines a master zone file
+    file "master.example.net";
+    ....
+};

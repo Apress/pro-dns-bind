@@ -1,0 +1,18 @@
+; zone file fragment for example.com.
+$TTL 2d ; zone TTL default = 2 days
+$ORIGIN example.com.
+@               SOA server.example.com. hostmaster.example.com. (
+               2003080800 ; serial number
+               1d12h      ; refresh =  1 day 12 hours
+               15m        ; update retry = 15 minutes
+               3w12h      ; expiry = 3 weeks + 12 hours
+               2h20m      ; minimum = 2 hours + 20 minutes
+               )
+...
+_http._tcp      SRV 10 1 80 slow.example.com.
+                SRV 10 3 80 fast.example.com.
+; if neither slow or fast available, switch to
+; an external backup web server but use port 8100 not port 80
+                SRV 20 0 8100 backup.example.net.
+slow            A   192.168.254.3
+fast            A   192.168.254.4

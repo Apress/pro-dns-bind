@@ -1,0 +1,208 @@
+// example sdb driver for BIND
+// reads and parses zone file into ram structure
+// INCLUDES
+// add any required std function includes used by driver
+#include <stdio.h> // for fopen etc.
+
+// BIND includes
+#include <isc/mem.h> // required for isc_mem_t structure
+#include <isc/result.h> // result codes
+#include <dns/sdb.h> // std headers for all sdb functions
+#include <named/globals.h> // BIND globals 
+#include <named/log.h> // for isc_log_write
+// driver includes
+#include "example.h"  // header for sample driver
+
+// DEFINES and MACROS
+#define DRIVERNAME "example"
+#define PRIVATE static
+#define EXAMPLE_ZONE_SIZE (2 * 1024) // fixed memory allocation
+#define FILENAME_SIZE 50
+#define BUFFER_SIZE 200
+// STRUCTURES
+/* trivial structure to hold RRs */
+typedef struct rrset_tag{
+  char         owner[30];  // owner name
+   unsigned int ttl;       // TTL
+   char         type[10];  // RR type
+   char         rdata[50];  // rdata
+}RRSET, *RRSET_ID;
+// PRIVATE PROTOTYPES
+PRIVATE isc_result_t example_create(const char *zone, int argc, char **argv,
+       void *driverdata, void **dbdata);
+PRIVATE void example_destroy(const char *zone, void *driverdata, void **dbdata);
+PRIVATE isc_result_t  example_lookup(const char *zone, const char *name, 
+                void *dbdata, dns_sdblookup_t *);
+PRIVATE isc_result_t example_allnodes(const char *zone, void *dbdata,
+                    dns_sdballnodes_t *allnodes);
+PRIVATE void * example_read_zone(char *directory, char *file,const char* zone);
+// PRIVATE VARIABLES
+// list of callback functions in dns_sdbmethods_t structure
+PRIVATE dns_sdbmethods_t example_callbacks = {
+   example_lookup, // lookup callback function - mandatory
+   NULL, // authority callback function - optional
+   example_allnodes, // allnodes callback function - optional
+   example_create, // create callback function - optional
+   example_destroy // destroy callback function - optional
+};
+// pointer to handle allocated by BIND and supplied to dns_sdb_unregister
+PRIVATE dns_sdbimplementation_t *namedhandle = NULL; 
+
+// PRIVATE FUNCTIONS 
+/*********************
+*
+* example_create()
+* handle create callback for the example driver
+* 1. call example_read_zone
+* 2. update dbdata if OK
+* 3. driverdata contains /var/named/zones/
+* 4. on good exit dbdata contains memory based zone structure
+*********************/
+PRIVATE isc_result_t example_create(const char *zone, int argc, char **argv,
+       void *driverdata, void **dbdata)
+{
+  isc_result_t result = ISC_R_FAILURE;
+  if (argc != 2){
+    isc_log_write(ns_g_lctx, NS_LOGCATEGORY_GENERAL,
+    NS_LOGMODULE_SERVER, ISC_LOG_ERROR,
+      "Example Driver: No file defined for %s", zone);
+        return result;
+       };
+  *dbdata = example_read_zone(driverdata, argv[1],zone);
+  if(*dbdata == NULL){ // failed
+    return result;
+  };
+  return ISC_R_SUCCESS;
+};
+/*********************
+*
+* example_read_zone
+* 1. read zone file
+* 2. allocate fixed memory chunk (2K)
+* 3. add count of RRs
+* 4. populate RR structure
+* return NULL = error else address of buffer containing zone file
+*********************/
+PRIVATE void * example_read_zone(char *directory, char *file, const char* zone)
+{
+  char filename[FILENAME_SIZE];  // zone file name
+  char buffer[BUFFER_SIZE];   // zone file line buffer
+  FILE *fp;
+  RRSET_ID rrs;
+  strcpy(filename, directory);
+  strcpy(&filename[0] + strlen(directory), file);
+  if(!fopen(filename,"r")){
+    isc_log_write(ns_g_lctx, NS_LOGCATEGORY_GENERAL,NS_LOGMODULE_SERVER, ISC_LOG_ERROR,
+      "Example Driver: Zone %s File %s does not exist", zone, filename);
+    return NULL;
+  }
+  // allocate fixed memory for file
+  // very crude for example purposes only
+  rrs = (RRSET_ID)isc_mem_get(ns_g_mctx,EXAMPLE_ZONE_SIZE);
+  if (rrs == NULL){ // failed
+  isc_log_write(ns_g_lctx, NS_LOGCATEGORY_GENERAL,NS_LOGMODULE_SERVER, ISC_LOG_ERROR,
+      "Example Driver: isc_mem_get fail");
+    return NULL;
+  }
+  while(fgets(buffer, BUFFER_SIZE, fp) != NULL){
+    /* read file discard comments
+    *  populate structure rrs 
+    * all zone apex RRs will have @ in owner name */
+  };
+  ++rrs; // point to next structure entry
+  // add dummy end record
+  *(&rrs->owner[0]) = '~'; // special end name
+  fclose(fp);  // close file
+  return rrs;  // return dbdata containing zone file
+};
+/*********************
+*
+* example_lookup
+* handle lookup callback for the example driver
+* trivial exhaustive scan of the whole memory structure
+*
+*********************/
+isc_result_t  example_lookup(const char *zone, const char *name, 
+                void *dbdata, dns_sdblookup_t *lookup)
+{
+  RRSET_ID rrs = dbdata;
+  isc_result_t result = ISC_R_NOTFOUND; // default
+  while(*(&rrs->owner[0]) != '~')
+  {
+    if(strcmp(name,rrs->owner))
+    {
+      result = ISC_R_SUCCESS;
+      result = dns_sdb_putrr(lookup,rrs->type,rrs->ttl, rrs->rdata);
+      if (result != ISC_R_SUCCESS)
+      {
+        return result;  // error exit
+      };
+    };
+    ++rrs;
+  };
+  return result;
+};
+
+/*********************
+*
+* example_allnodes
+* handle allnodes callback for the example driver
+*
+*********************/
+PRIVATE isc_result_t example_allnodes(const char *zone, void *dbdata,
+                    dns_sdballnodes_t *allnodes)
+{
+  RRSET_ID rrs = dbdata;
+  isc_result_t result = ISC_R_SUCCESS; // default
+  while(*(&rrs->owner[0]) != '~'){
+    result = dns_sdb_putnamedrr(allnodes,rrs->owner,rrs->type,rrs->ttl, rrs->rdata);
+    if (result != ISC_R_SUCCESS){
+      return result;  // error exit
+    };
+    ++rrs;
+  };
+  return result;
+};
+/*********************
+*
+* example_destroy
+* handle destroy callback for the example driver
+* deallocate memory allocated at create
+*********************/
+PRIVATE void example_destroy(const char *zone, void *driverdata, void **dbdata)
+{
+  isc_mem_free(ns_g_mctx, dbdata);
+  return;
+};
+
+// PUBLIC FUNCTIONS
+/*********************
+*
+* example_init
+* register callbacks for the example driver
+* Note: In this driver the DNS_SDBFLAG_RELATIVERDATA flag
+* is not strictly needed and is used only to illustrate the use of multiple flags
+* the variable 'directory' is used to illustrate that 
+* parameters may be supplied on this call
+* equally the function may or may not return a value
+*
+*********************/
+isc_result_t  example_init (char directory[])
+{
+   // initialize flags
+   unsigned int flags = DNS_SDBFLAG_RELATIVEOWNER | DNS_SDBFLAG_RELATIVERDATA;
+   return (dns_sdb_register(DRIVERNAME,&example_callbacks,directory,flags,ns_g_mctx, &namedhandle));
+};
+/*********************
+*
+* example_clear
+* unregister callbacks for this driver
+*
+*********************/
+
+void example_clear(void)
+{
+   if (namedhandle != NULL){
+      dns_sdb_unregister(&namedhandle);
+   };
+};

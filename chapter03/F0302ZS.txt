@@ -1,0 +1,6 @@
+2         IN      PTR     ns1.example.com.
+.....
+4         IN      PTR     mail.example.com.
+.....
+16        IN      PTR     joe.example.com.
+17        IN      PTR     www.example.com.

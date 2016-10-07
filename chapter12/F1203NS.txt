@@ -1,0 +1,27 @@
+// change log
+// 1. changed by M.E. on 24th January
+//   a. added something
+acl "name" {...
+             // acl clauses if present generally come first
+             // to avoid forward references
+};
+key "name" {...
+             // key clauses if present must appear
+             // before being referenced
+};
+
+logging {
+          // requires at least a file
+          // statement unless using syslog
+          // order not important with BIND 9
+};
+options {
+         // other statements (as required)
+};
+// zones statements including 'required' zones
+zone {
+....
+};
+zone {
+....
+};

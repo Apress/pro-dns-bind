@@ -1,0 +1,12 @@
+zone "example.com" in {
+    type master;
+     ....
+    update-policy { grant * self * A;};
+};
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+// example.com fragment from named.conf
+// defines this server as a zone slave
+zone "example.com" in{
+     type slave;
+     file "slave.example.com";
+     masters {192.168.23.17;};
+};
+

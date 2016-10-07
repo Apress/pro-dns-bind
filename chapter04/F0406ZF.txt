@@ -1,0 +1,49 @@
+; public zone master file
+; provides minimal public visibility of external services
+example.com. IN      SOA   ns1.example.com. hostmaster.example.com. (
+                              2003080800 ; se = serial number
+                              12h         ; ref = refresh
+                              15m        ; ret = update retry
+                              3w         ; ex = expiry
+                              3h      ; min = minimum
+                              )
+              IN      NS      ns1.example.com.
+              IN      NS      ns2.example.com.
+              IN      MX  10  mail.example.com.
+              IN      MX  20  mail.example.net.
+ns1           IN      A       192.168.254.1
+ns1           IN      A       192.168.254.2
+mail          IN      A       192.168.254.3
+www           IN      A       192.168.254.4
+ftp           IN      A       192.168.254.5
+The internal name server-the stealth server-zone file will make visible internal and external hosts, provide recursive queries and all manner of other services. For instance, this name server would use a private zone master file that could look like this:
+; private zone master file used by stealth server(s)
+; provides public and private services and hosts
+example.com. IN      SOA   ns3.example.com. hostmaster.example.com. (
+                              2003080800 ; se = serial number
+                              12h         ; ref = refresh
+                              15m        ; ret = update retry
+                              3w         ; ex = expiry
+                              3h         ; min = minimum
+                              )
+              IN      NS      ns3.example.com.
+              IN      NS      ns4.example.com.
+              IN      NS  10  mail.example.com.
+              IN      MX  20  mail.anotherdomain.com.
+; public hosts
+mail          IN      A       192.168.254.3
+www           IN      A       192.168.254.4
+ftp           IN      A       192.168.254.5
+; private hosts
+joe           IN      A       192.168.254.6
+bill          IN      A       192.168.254.7
+fred          IN      A       192.168.254.8
+ns3           IN      A       192.168.254.9
+ns4           IN      A       192.168.254.10
+accounting    IN      A       192.168.254.28
+payroll       IN      A       192.168.254.29
+
+
+
+
+

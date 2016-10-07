@@ -1,0 +1,17 @@
+// named.conf example.com slave fragment
+options {
+   ....
+   directory "/var/named";
+   dnssec-enable yes;
+   ....
+};
+include "keys/example.com.key"; // include the key clause
+server 10.1.2.5 {
+   keys {"example.com";}; // name used in key clause
+};
+....
+zone "example.com" in{
+   type slave;
+   file "slave.example.com";
+   masters {10.1.2.5;};
+};

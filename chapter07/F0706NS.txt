@@ -1,0 +1,6 @@
+// BIND named.conf fragment
+zone "0.0.127.IN-ADDR.ARPA" in{
+  type master;
+  file "localhost.rev";
+  allow-update{none;}; // optional
+};

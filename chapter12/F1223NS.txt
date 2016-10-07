@@ -1,0 +1,16 @@
+// named.conf fragment
+....
+zone "example.com" in{
+    type slave;
+    masters {192.168.254.2;};
+    file "slave.example.com";
+    // allows notify from the defined IPs
+    allow-notify (192.168.0.15; 192.168.0.16; 10.0.0.1;);
+};
+zone "example.net" in{
+    type slave;
+    file "slave.example.net";
+    masters {192.168.254.3;};
+    // allows no notifies
+    allow-notify (none;);
+};

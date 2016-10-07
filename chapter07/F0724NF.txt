@@ -1,0 +1,60 @@
+// View based Authoritative Name Server for EXAMPLE.COM.
+// Recommended that you always maintain a change log in this file as shown here
+// CHANGELOG:
+// 1. 9 july 2005 INITIALS or NAME
+//  a. did something
+// a. 23 july 2005 INITIALS or NAME
+//  a. did something again
+//  b. another change
+//
+// global options
+options {
+  // all relative paths use this directory as a base
+  directory "/var/named";
+  // version statement for security to avoid hacking known weaknesses
+  version "not currently available";
+};
+//
+// log to /var/log/example.com all events from info UP in severity (no debug)
+// uses 3 files in rotation swaps files when size reaches 250K
+
+// failure messages up to this point are in (syslog) /var/log/messages
+//
+  logging{
+  channel example_log{
+   file "/var/log/named/example.log" versions 3 size 250k;
+   severity info;
+ };
+  category default{
+  example_log;
+ };
+};
+// provide recursive queries and caching for our internal users
+view "goodguys" {
+  match-clients { 192.168.254.0/24; }; // example.com's network
+  recursion yes;
+  // required zone for recursive queries
+  zone "." {
+   type hint;
+   file "root.servers";
+  };
+}; // end view
+
+// external hosts view
+view "badguys" {
+  match-clients {"any"; }; // all other hosts
+  // recursion not supported
+  recursion no;
+ zone "example.com" {
+   type master;
+   // only public hosts
+   file "view/master.example.com.external";
+  };
+  // reverse map for local address at example.com
+  // uses 192.168.254.0 for illustration
+  zone "254.168.192.IN-ADDR.ARPA" in{
+    type master;
+    file "view/192.168.254.rev.external";
+  };
+
+}; // end view

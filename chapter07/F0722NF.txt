@@ -1,0 +1,56 @@
+// Authoritative only Name Server for Example, INC.
+// Recommended that you always maintain a change log in this file as shown here
+// CHANGELOG:
+// 1. 9 july 2005 INITIALS or NAME
+//  a. did something
+// a. 23 july 2005 INITIALS or NAME
+//  a. did something again
+//  b. another change
+//
+options {
+  // all relative paths use this directory as a base
+  directory "/var/named";
+  // version statement for security to avoid hacking known weaknesses
+  version "not currently available";
+  recursion no;
+  // disables all zone transfer requests 
+  // for performance as well as security reasons
+  allow-transfer{"none"};
+};
+//
+// log to /var/log/zytrax-named all events from info UP in severity (no debug)
+// uses 3 files in rotation swaps files when size reaches 250K
+// failure messages up to this point are in (syslog) /var/log/messages
+//
+  logging{
+  channel example_log{
+   file "/var/log/named/example.log" versions 3 size 250k;
+   severity info;
+ };
+  category default{
+  example_log;
+ };
+};
+zone "example.com" in{
+  type master;
+  file "master/master.example.com";
+  allow-update{none;};
+};
+// reverse map for local address at example.com
+// uses 192.168.254.0 for illustration
+zone "254.168.192.IN-ADDR.ARPA" in{
+  type master;
+  file "192.168.254.rev";
+};
+// required local host domain
+zone "localhost" in{
+  type master;
+  file "master.localhost";
+  allow-update{none;};
+};
+// localhost reverse map
+zone "0.0.127.IN-ADDR.ARPA" in{
+  type master;
+  file "localhost.rev";
+  allow-update{none;};
+};

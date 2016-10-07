@@ -1,0 +1,9 @@
+; zone file fragment
+        IN  MX  10  mail.example.com.
+        IN  MX  10  mail1.example.com.
+        IN  MX  10  mail2.example.com.
+....
+mail    IN  A       192.168.0.4
+mail1   IN  A       192.168.0.5
+mail2   IN  A       192.168.0.6
+

@@ -1,0 +1,24 @@
+// defining masters
+masters "common masters" {
+    masters {192.168.2.7; 10.2.3.15 port 1127; 2001:db8:0:1::15;};
+};
+// defining options clause
+options {
+    ....
+    also-notify {192.168.2.3;192.168.2.4;};
+    ....
+};
+// zones
+zone "example.com" {
+  // NOTIFY messages  for this domain sent to global
+  // also-notify list
+  type master;
+  file "master.example.com";
+};
+zone "example.net" {
+  // NOTIFY messages NOT sent to global
+  // also-notify list
+  type master;
+  file "master.example.net;
+  also-notify {"none";};
+};

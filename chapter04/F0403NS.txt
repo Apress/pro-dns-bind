@@ -1,0 +1,14 @@
+// options clause fragment of named.conf
+// recursion yes is the default and may be omitted
+options {
+       recursion yes;
+};
+// zone sectionclause
+....
+// the DOT indicates the root domain = all domains
+zone "." IN {
+   type hint;
+   file "root.servers";
+};
+
+

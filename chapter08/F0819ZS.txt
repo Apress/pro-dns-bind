@@ -1,0 +1,10 @@
+; zone file fragment for example.com
+              IN  MX 10 mail.example.com.
+....
+mail          IN  A     192.168.0.4
+; SPF records
+; domain SPF
+example.com.  IN  TXT   "v=spf1 mx -all"
+; mail host SPF
+mail          IN  TXT   "v=spf1 a -all"
+

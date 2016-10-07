@@ -1,0 +1,13 @@
+// named.conf fragment
+....
+// IPv4 server
+server 10.2.3.15 {
+    transfer-format one-answer;
+    edns no;
+};
+// IPv6 addresses of same server
+server 2001:db8:0:27::17 {
+    transfer-format one-answer;
+    edns no;
+};
+....

@@ -1,0 +1,6 @@
+; name servers RR for the domain
+              IN      NS      ns1.example.com.
+; the second name server is
+; external to this zone (domain).
+              IN      NS      ns2.example.net.
+

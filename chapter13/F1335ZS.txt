@@ -1,0 +1,13 @@
+; zone file fragment for example.com
+$TTL 2d ; zone TTL default = 2 days or 172800 seconds
+$ORIGIN 5.5.5.1.1.1.4.4.E164.ARPA.
+....
+2.1.2.1     NAPTR (
+   10   ;order
+   100  ; prerference
+   "u" ; flag
+   "E2U+sip" ;svc
+   "!^\\+44111555(.#)$!sip:7\\1@sip.example.com!"
+   .) ; replace 
+            NAPTR 10 101 "u" "E2U+pres" "!^.*$!mailto:sheila@example.com!" .
+....

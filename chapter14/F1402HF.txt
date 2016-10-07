@@ -1,0 +1,5 @@
+// example sdb driver for BIND
+// reads and parses zone file into ram structure
+// header file
+isc_result_t example_init (char directory[]);
+void example_clear(void);

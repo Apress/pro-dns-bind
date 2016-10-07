@@ -1,0 +1,23 @@
+// include two acl clauses
+include "/var/named/acl/private.acl"
+include "/var/named/acl/public.acl"
+options {
+    // relative to named.conf directory
+    include "some.options";
+    directory "/var/named";
+    // include inside a clause - relative to 'directory'
+    include "other.options"
+};
+//  using include for zones
+...
+// zones for chemical division - absolute path
+include "/var/named/chemical/zone.files";
+// zones for engineering division
+include "/var/named/engineering/zone.files";
+// these load from the path specified by 'directory' option
+include "more-zone.files";
+// housekeeping zones explicitly included
+zone "64/27.23.168.192.in-addr.arpa" in{
+   type master;
+   file "192.169.23.rev";
+};

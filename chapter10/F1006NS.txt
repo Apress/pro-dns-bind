@@ -1,0 +1,9 @@
+logging{
+    channel normal_log {
+    file "/var/log/named/normal.log" versions 3 size 2m;
+    severity error;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+....

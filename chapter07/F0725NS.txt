@@ -1,0 +1,8 @@
+// BIND named.conf fragment
+// forwards requests for domains other than example.com
+// to the public name server ns1.example.com = 192.168.254.2
+zone "." in{
+  type forward;
+..forwarders{192.168.254.2;};
+  forward only;
+};

@@ -1,0 +1,17 @@
+; zone file fragment for example.com
+$TTL 2d ; zone TTL default = 2 days or 172800 seconds
+$ORIGIN example.com.
+example.com. IN       SOA   ns1.example.com. hostmaster.example.com. (
+               2003080800 ; serial number
+               3h         ; refresh =  3 hours
+               15M        ; update retry = 15 minutes
+               3W12h      ; expiry = 3 weeks + 12 hours
+               2h20M      ; minimum = 2 hours + 20 minutes
+               )
+              IN  MX    10  mail.example.com.
+....
+fred          IN  A     192.168.254.2
+              IN  NSAP  0x47.0005.80.005a00.0000.0001.e133.ffffff000161.00
+....
+mail          IN  A     192/168.254.3
+....

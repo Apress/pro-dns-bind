@@ -1,0 +1,9 @@
+; zone file fragment for example.org
+$ORIGIN example.org.
+           IN  MX 10 mail.example.net.
+....
+; SPF records
+; domain SPF
+@          IN  TXT   "v=spf1 include:example.net -all"
+
+

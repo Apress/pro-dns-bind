@@ -1,0 +1,21 @@
+; zone fragment for example.com
+; mail servers in the same zone
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+example.com. IN       SOA   ns1.example.com. hostmaster.example.com. (
+               2003080800 ; serial number
+               3h         ; refresh =  3 hours
+               15M        ; update retry = 15 minutes
+               3W12h      ; expiry = 3 weeks + 12 hours
+               2h20M      ; minimum = 2 hours + 20 minutes
+               )
+              IN      MX     10  mail  ; unqualified name
+; the line above is functionally the same as the line that follows
+; example.com. IN       MX     10  mail.example.com.
+; any number of mail servers may be defined
+              IN      MX     20  mail2.example.com.
+; an external back-up
+              IN      MX     30  mail.example.net.
+; the local mail servers need an A record
+mail          IN      A      192.168.0.3
+mail2         IN      A      192.168.0.3

@@ -1,0 +1,10 @@
+// zone clause fragment of named.conf
+zone "example.com" IN {
+               type forward;
+               forwarders {10.0.0.1; 10.0.0.2;};
+                forward only;
+};
+
+
+
+

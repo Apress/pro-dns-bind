@@ -1,0 +1,14 @@
+; zone file fragment for example.net
+$ORIGIN example.net.
+             IN  MX 10   mail.example.net.
+....
+mail         IN  A       192.168.0.37
+; SPF records
+; domain SPF - any host from
+; 192.168.0.32 to 192.168.0.83 can send mail
+; and any MX host
+@            IN  TXT    "v=spf1 ip4:192.168.0.37/27 mx -all ext="
+; mail SPF
+mail         IN  TXT    "v=spf1 a -all"
+
+

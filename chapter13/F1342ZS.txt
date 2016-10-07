@@ -1,0 +1,22 @@
+; Reverse map for 192.168.23.0
+$TTL 12h
+$ORIGIN 23.168.192.IN-ADDR.ARPA.
+@             IN      SOA   ns1.example.com. hostmaster.example.com. (
+                              2003080800 ; serial number
+                              3h         ; refresh
+                              15m        ; update retry
+                              3w         ; expiry
+                              3h         ; minimum
+                              )
+              IN      NS      ns1.example.com.
+              IN      NS      ns2.example.com.
+....
+2             IN      PTR     joe.example.com. ; right-hand FQDN names
+; 2 is an unqualified name and could have been written as
+; 2.23.168.192.IN-ADDR.ARPA. IN PTR  joe.example.com.
+....
+15            IN      PTR     www.example.com.
+....
+17            IN      PTR     bill.example.com.
+....
+254            IN      PTR     fred.mydomain.com.

@@ -1,0 +1,11 @@
+; example.com zone file fragment 
+$TTL 2d ; zone TTL default of 2 days
+$ORIGIN example.com.
+....
+bill   IN  A   192.168.2.3
+       IN  TXT "one fine day"
+       IN  RP  bill.example.com.
+fred   IN  A   192.168.2.4
+       IN  RP  fred.example.com.
+       IN  AAAA 2001:db8::15
+....

@@ -1,0 +1,16 @@
+; this is a full-line comment
+$TTL 12h    ; directive - comment terminates the line
+$ORIGIN example.com.
+; Start of Authority (SOA) record defining the zone (domain)
+; illustrates an RR record spread over more than one line
+; using the enclosing parentheses
+@  IN  SOA  ns1.example.com. hostmaster.example.com. (
+              2003080800 ; se = serial number
+              3h         ; ref = refresh
+              15m        ; ret = update retry
+              3w         ; ex = expiry
+              2h20m      ; min = minimum
+              )
+; single line RR
+    IN  NS  ns1.example.com. ;with a comment
+...

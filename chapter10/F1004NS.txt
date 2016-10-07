@@ -1,0 +1,22 @@
+// named.conf fragment
+include "/var/named/rndc/keys/key.clause"; // single file containing keys
+include "/var/named/keys/key.clauses"; // single file containing keys
+controls {
+   inet 127.0.0.1 allow {localhost;} keys {"rndc-key"};
+};
+options {
+   ....
+};
+include "/var/named/views/private-view.clause"; // hidden private view
+view "public-view" {
+   include "/home/firstuser/zone.clause";
+   zone "example.com" in {
+   type master;
+   file "var/named/masters/ddns/example.net";
+   // key clause referenced below will be in
+   // /var/named/keys/keys.clause above
+   allow-update {key "example.net";}; 
+   };
+};
+
+

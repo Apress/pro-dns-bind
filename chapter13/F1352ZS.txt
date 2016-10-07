@@ -1,0 +1,9 @@
+; zone file fragment for example.com
+$TTL 2d ; zone default = 2 days
+$ORIGIN example.com.
+....
+@          IN     A      192.168.254.8
+           IN     A      192.168.254.9
+           IN     A      192.168.254.10
+           IN     TXT "Example.com web service is here"
+www        IN     CNAME  example.com.

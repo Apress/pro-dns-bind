@@ -1,0 +1,9 @@
+; zone file fragment for example.com
+$TTL 2d ; zone TTL default = 2 days or 172800 seconds
+$ORIGIN example.com.
+...
+@           IN  AFSDB  1  joe.example.com.
+            IN  AFSDB  1  bill.example.com.
+joe          IN  A       192.168.254.3
+bill         IN  A       192.168.254.4
+....

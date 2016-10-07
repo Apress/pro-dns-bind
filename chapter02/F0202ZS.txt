@@ -1,0 +1,8 @@
+@         IN      SOA   ns1.example.com. hostmaster.example.com. (
+                        2003080800 ; sn = serial number
+                        3h         ; refresh time
+                        15m        ; retry = update retry
+                        3w         ; expiry
+                        3h         ; min = minimum
+                        )
+

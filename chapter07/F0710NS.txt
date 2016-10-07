@@ -1,0 +1,10 @@
+// zone starts a new clause
+zone "example.com" {
+  // all clause statements are contained within braces
+  // type, file and masters are statements and terminate with a semicolon
+   type slave;
+   file "slave.example.com";
+   masters {10.0.0.1;};
+  // the zone clause is terminated with a closing brace
+};
+

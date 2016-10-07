@@ -1,0 +1,10 @@
+; zone file fragment for example.com
+$ORIGIN example.com.
+             IN  MX 10  mail.example.net.
+....
+; SPF records
+; domain SPF
+@            IN  TXT    "v=spf1 include:example.net -all"
+; WARNING: offsite.com MUST have a valid SPF definition
+
+

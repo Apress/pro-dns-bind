@@ -1,0 +1,7 @@
+// options section clause fragment of named.conf
+// recursion no = effectively inhibits caching
+options {
+               recursion no;
+};
+// zone file sectionsclauses
+....

@@ -1,0 +1,44 @@
+// named.conf example.com master fragment
+logging{
+    channel normal_log {
+    file "/var/log/named/normal.log" versions 3 size 2m;
+    severity error;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    channel dnssec_log { // streamed dnssec log
+    file "/var/log/named/dnssec.log" versions 3 size 2m;
+    severity debug 3;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category default{
+    normal_log;
+    };
+    category dnssec{
+    dnssec_log; 
+    };
+};
+options {
+   ....
+   directory "/var/named";
+   dnssec-enable yes;
+   ....
+};
+// include the key clause for example.com key name
+include "keys/example.com.key"; // include the key clause
+// server clause references the key clause included above
+server 10.1.2.3 {
+   keys {"example.com";}; // name used in key clause
+};
+....
+zone "example.com" in{
+   type master;
+   file "master.example.com";
+   // allow transfer only if key (TSIG) present
+   allow-transfer {key "example.com";};
+};
+....
+

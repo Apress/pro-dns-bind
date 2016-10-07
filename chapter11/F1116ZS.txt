@@ -1,0 +1,21 @@
+         86400 DNSKEY 256 3 5 (
+                  AQPCrtJceGC5REQ4khX5VKSvnlWgBxH/1xpg
+                  dV0aRDNEebrwNVohBMEVI1j3Nh7UIQ==
+                  ) ; key id = 39539
+         86400 DNSKEY 257 3 5 (
+                  AQPZjeWTe9q9980o2XWmaaMYNb9xxMDdwHNH
+                  waQ5CQ6tVQwg5udwmnWTJt5ryBI+DQ==
+                  ) ; key id = 50148
+         86400 DNSKEY 257 3 5 (
+                  AQPnvgDqCShrBmFEh5vW7kM4DG/kMwa3EBnP
+                  1WnVhGKV1I6T01x+u4uNoe1/uocNOQ==
+                  ) ; key id = 12513
+         86400 RRSIG DNSKEY 5 2 86400 20050518190823 (
+                  20050418190823 12513 example.com.
+                  ZI95WgwWViUm7YYe2dwznC5M17Q= )
+         86400 RRSIG DNSKEY 5 2 86400 20050518190823 (
+                  20050418190823 39539 example.com.
+                  wLonbgY9l3DigWoLb6zDZxlnEVQ= )
+         86400 RRSIG DNSKEY 5 2 86400 20050518190823 (
+                  20050418190823 50148 example.com.
+                  OVU+uuC8LYj8561OsmDlNE9pzVY= )

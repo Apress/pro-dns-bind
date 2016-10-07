@@ -1,0 +1,9 @@
+options {
+....
+    notify-source-v6 {2001:db8:0:1::3;}; // all zones
+....
+};
+
+
+
+

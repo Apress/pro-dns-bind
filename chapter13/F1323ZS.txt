@@ -1,0 +1,5 @@
+; zone fragment for example.com
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+....
+ftp        IN      CNAME   ftp.example.net.

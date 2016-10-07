@@ -1,0 +1,44 @@
+// named.conf fragment
+logging{
+    channel main_log {
+    file "/var/log/named/main.log" versions 3 size 2m;
+    severity info;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    channel notify_log {
+    file "/var/log/named/notify.log" versions 3 size 1m;
+    severity info;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    channel ddns_log {
+    file "/var/log/named/ddns.log" versions 3 size 1m;
+    severity info;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category default{
+    main_log;
+    };
+    category lame-servers{
+    null;  // discard
+    };
+    category notify{
+    notify_log;
+    };
+    category update{
+    ddns_log;
+    };
+    category update-security{
+    ddns_log;
+    };
+    category unmatched {
+    main_log; default_stderr;
+    };
+};
+
+

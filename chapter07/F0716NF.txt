@@ -1,0 +1,74 @@
+// Slave & caching Name Server for EXAMPLE.NET.
+// provides slave name server support for example com
+// Recommended that you always maintain a change log in this file as shown here
+// CHANGELOG:
+// 1. 9 july 2005 INITIALS or NAME
+//  a. did something
+// a. 23 july 2005 INITIALS or NAME
+//  a. did something again
+//  b. another change
+//
+options {
+  // all relative paths use this directory as a base
+  directory "/var/named";
+  // version statement for security to avoid hacking known weaknesses
+  // if the real version number is published
+  version "not currently available";
+  // configuration unique statements
+  // disables all zone transfer requests
+  allow-transfer {"none";};
+  // optional - BIND default behavior is recusrion
+  recursion yes;
+};
+//
+// log to /var/log/named/examplenet.log all events from info UP
+//  in severity
+// defaults to use 3 files in rotation
+// failure messages up to this point are in (syslog) /var/log/messages
+  logging{
+  channel examplenet_log{
+  file "/var/log/named/examplenet.log" versions 3 size 250k;
+  severity info;
+ };
+  category default{
+  examplenet_log;
+ };
+};
+// required zone for recursive queries
+zone "." {
+  type hint;
+  file "root.servers";
+};
+// assumes this server is also master for example.net
+zone "example.net" in{
+  type master;
+  file "master/master.example.net";
+  allow-update {none;};
+};
+// slave for example.com; see following notes
+zone "example.com" in{
+  type slave;
+  file "slave/slave.example.com";
+  masters (192.168.254.2;);
+  // allows notifies only from master
+  allow-notify {192.168.254.2;};
+};
+// required local host domain
+zone "localhost" in{
+  type master;
+  file "master.localhost";
+  allow-update{none;};
+};
+// localhost reverse map
+zone "0.0.127.IN-ADDR.ARPA" in{
+  type master;
+  file "localhost.rev";
+  allow-update{none;};
+};
+// reverse map for example.net local IPs
+// assumed 192.168.1.0 (see notes)
+zone "1.168.192.IN-ADDR.ARPA" IN {
+  type slave;
+  file "slave.192.168.1.rev";
+  masters {192.168.1.1;};
+};

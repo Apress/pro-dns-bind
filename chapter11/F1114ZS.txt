@@ -1,0 +1,19 @@
+             86400 DNSKEY 256 3 5 (
+                        AQPCf56dKVA+TAzVQVedURNd/twKcbg0z
+                        t/4w8JgeybiVZeHbYXHIljS0kHt8vw==
+                        ) ; key id = 3977
+             86400 DNSKEY 256 3 5 (
+                        AQPCrtJceGC5REQ4khX5VKSvnlWgBxH/1
+                        dV0aRDNEebrwNVohBMEVI1j3Nh7UIQ==
+                        ) ; key id = 39539
+             86400 DNSKEY 257 3 5 (
+                        AQPnvgDqCShrBmFEh5vW7kM4DG/kMwa3E
+                        1WnVhGKV1I6T01x+u4uNoe1/uocNOQ==
+                        ) ; key id = 12513
+             86400 RRSIG DNSKEY 5 2 86400 20050518182149 (
+                        20050418182149 3977 example.com.
+                        0yWzCmieTtR2bES6l+KFXBOosv8= )
+             86400 RRSIG DNSKEY 5 2 86400 20050518182149 (
+                        20050418182149 12513 example.com.
+                        IQ0teNohrH5oZ1+2EM22LrPFHrk= )
+_ldap._tcp.example.com. 86400 IN SRV 5 2 235 www.example.com.

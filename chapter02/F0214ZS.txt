@@ -1,0 +1,5 @@
+; define an IP that resolves to example.com
+              IN      A       192.168.254.7
+; alias www.example.com to example.com
+www           IN      CNAME       example.com.
+

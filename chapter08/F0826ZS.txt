@@ -1,0 +1,9 @@
+; zone file fragment for example.org
+; zone does NOT contain MX record(s)
+$ORIGIN example.org.
+...
+; SPF records
+; domain SPF
+@        IN  TXT   "v=spf1 -all"
+
+

@@ -1,0 +1,4 @@
+              IN      MX        mail.example.com.
+mail          IN      CNAME   www.example.com.
+www           IN      A       192.168.254.7
+

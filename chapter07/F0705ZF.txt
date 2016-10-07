@@ -1,0 +1,12 @@
+$TTL 86400 ; 24 hours could have been written as 24h or 1d
+$ORIGIN localhost.
+@  1D  IN    SOA @ hostmaster (
+             2004022401 ; serial
+             12h  ; refresh
+             15m  ; retry 
+             1w ; expiry
+             3h ; minimum
+     )
+@  1D  IN  NS @ ; localhost is the name server
+   1D  IN  A  127.0.0.1 ; IPv4 loop-back address
+   1D  IN  AAAA  ::1 ; IPv6 loop-back address

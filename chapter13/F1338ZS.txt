@@ -1,0 +1,32 @@
+; zone fragment for example.com
+; name servers in the same zone
+$TTL 2d ; default TTL is 2 days
+$ORIGIN example.com.
+@              IN      SOA   ns1.example.com. hostmaster.example.com. (
+               2003080800 ; serial number
+               2h         ; refresh =  2 hours
+               15M        ; update retry = 15 minutes
+               3W12h      ; expiry = 3 weeks + 12 hours
+               2h20M      ; minimum = 2 hours + 20 minutes
+               )
+; main domain name servers
+              IN      NS     ns1.example.com.
+              IN      NS     ns2.example.com.
+; A records for name servers above
+ns1           IN      A      192.168.0.3
+ns2           IN      A      192.168.0.4
+....
+; subdomain definitions
+$ORIGIN us.example.com.
+; two name servers for the subdomain
+@             IN      NS     ns3.us.example.com.
+; the record above could have been written as
+; us.example.com. IN NS ns3.us.example.com.
+; OR as simply
+;      IN NS   ns3
+; the next name server points to ns1 above
+              IN      NS     ns1.example.com.
+; address record for subdomain name server - essential glue record
+ns3           IN      A      10.10.0.24 ; glue record
+; the record above could have been written as
+; ns3.us.example.com. A 10.10.0.24 if it is less confusing

@@ -1,0 +1,7 @@
+$ORIGIN example.net.
+; NLA assigns 19 bits
+example-com   IN  A6   29  0:2:ddef:: ipv6.example.org.
+
+$ORIGIN example.org.
+; SLA assigns remaining 29 bits
+example-com   IN  A6   0  2001:db8::

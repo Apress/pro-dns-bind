@@ -1,0 +1,10 @@
+; zone fragment for example.com
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+....
+joe          IN  A6  64      ::1  subnet1.example.com.
+....
+; the next A6 RR defines the subnet ID only (16 bits) and
+; references a further A6 RR for the remaining 48 bits
+subnet1      IN  A6  48      0:0:0:1:: example-com.example.net.
+....

@@ -1,0 +1,9 @@
+; example.com zone file fragment
+....
+
+ftp   IN  A   192.168.0.4
+      IN  A   192.168.0.5
+      IN  A   192.168.0.6
+www   IN  A   192.168.0.7
+      IN  A   192.168.0.8
+

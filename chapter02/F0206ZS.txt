@@ -1,0 +1,6 @@
+; mail server RRs for the zone (domain)
+     3w       IN      MX  10  mail.example.com.
+; the second  mail server is
+; external to the zone (domain)
+              IN      MX  20  mail.example.net.
+

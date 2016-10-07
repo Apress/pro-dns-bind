@@ -1,0 +1,4 @@
+key "example.com" (
+     alogorithm hmac-md5;
+     secret JuxDyYXIJhAia5WQe9oqUA==;
+};

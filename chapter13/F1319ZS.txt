@@ -1,0 +1,12 @@
+; zone file fragment for example.com
+$TTL 2d ; zone TTL default = 2 days or 172800 seconds
+$ORIGIN example.com.
+...
+nat-pt    IN  A       192.168.254.3
+          IN  AAAA    2001:db8::17
+          IN  APL     (
+                       1:192.168.254.0/27  ; IPv4 = 32
+                       2:2001:db8::0/122   ; IPv6 = 64
+                       !2:2001:db8::37/128 ; excluding 1 IPv6
+                      )
+....

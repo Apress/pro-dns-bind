@@ -1,0 +1,168 @@
+; File written on Thu Apr 14 12:39:03 2005
+; dnssec_signzone version 9.3.0
+example.com.  86400 IN SOA ns1.example.com. hostmaster.example.com. (
+                      2005032902 ; serial
+                      10800      ; refresh (3 hours)
+                      15         ; retry (15 seconds)
+                      604800     ; expire (1 week)
+                      10800      ; minimum (3 hours)
+                      )
+              86400 RRSIG SOA 5 2 86400 20050514153903 (
+                      20050414153903 38420 example.com.
+                      P8DKXJwN2dmfl16sqJqk9eVv6HfDs6tgs9B2
+                      k/J406v1dyxtl7lUq6oa0VSh9WzqDZTe3dis
+                      Ji/DGNVDfXvx3gUnN26sHjkAqZIpTtzYR/ql
+                      R+dXKfK14Sqeva0kl50GqWCmOtuaxlJ9h249
+                      w7P3qKtEs4nL1ELrtyEnOLyCX4k= )
+              86400 NS ns1.example.com.
+              86400 NS ns2.example.com.
+              86400 RRSIG NS 5 2 86400 20050514153903 (
+                      20050414153903 38420 example.com.
+                      TK9eFTMHpYqtyLZ+L6qWJmh5PfAsJlUFVI/Y
+                      Z4P5XBzbEerW85U7SsgrdKCil52qZ8a8OzQI
+                      5cbsGNrQHfrkvpPdE/D3RiIJzVGrG0mRDvkC
+                      kvdywljdadVg+8xsCp2XMGfebG2xzKfehO7G
+                      pFb+TtN2XYfXBVlFa+ZgGbJSkM8= )
+              86400 MX 10 mail.example.com.
+              86400 MX 10 mail1.example.com.
+              86400 RRSIG MX 5 2 86400 20050514153903 (
+                      20050414153903 38420 example.com.
+                      MPFBtkjE12FoNbUF06rgpXA6FCOEnqu6g6jB
+                      zH3nT4lE9TP89L0ErrD13XqKYik27RALoEL2
+                      y1UFvbk78rZKIeyRPRZh4/6O3qMcMqXq/BCa
+                      ITsCtlFjcPy4OOFb/76SN9soK8pcC3w3Nkg5
+                      BSDgbDRImKth+l+PTPiu+iQuUYY= )
+              10800 NSEC ldap._tcp.example.com. (NS SOA MX
+                                         RRSIG NSEC DNSKEY)
+              10800 RRSIG NSEC 5 2 10800 20050514153903 (
+                      20050414153903 38420 example.com.
+                      NYpw5eq7aW6j02eybm6Lj/T+4llyvCYuFLQW
+                      oqtTec38kGHxWtwMdZckSm3V+ColSnjJK8+N
+                      2YuoCJdooEetrwkUWZv/C/68ES3VVoFHHFqk
+                      cCMs+70IG3nMcuGB91yuGcpwBNqkYvm3hW/P
+                      ZBzj+ikuphPQ7x507F2VP9t1rC4= )
+              86400 DNSKEY 256 3 5 (
+                      AQPmYqOH3zNwuX4l2+hkh8UG1P14Gv8dfCSi
+                      6MbEX0N424EX+EIMl400OOBkep/ZtIRRJ4rf
+                      JONPGs8+HWJDMQOapZnVSYOmSH9V5V32c+j7
+                      Gx628y/MyyzwDuT6+zQ3cbobUKrlzL/PLEHe
+                      gqIDpGkF2VBWXWHLDTCJ5nXBsayYeQ==
+                      ) ; key id = 38420
+             86400 DNSKEY 257 3 5 (
+                      AQPnvgDqCShrBmFEh5vW7kM4DG/kMwa3EBnP
+                      SLAqWRbFOffIWP9ZA2vcZn5ngUjVZ/1IdOVi
+                      ZBO0FCm63bakNgpQ4UNH6e4LH8hnTDMyrlw9
+                      smNCxLr4ROqLlcLWDT4ANysDpCZmHUPilvJB
+                      1WnVhGKV1I6T01x+u4uNoe1/uocNOQ==
+                      ) ; key id = 12513
+             86400 RRSIG DNSKEY 5 2 86400 20050514153903 (
+                     20050414153903 12513 example.com.
+                     lUSl/8AXfEcdocB9syYu0Nk8AeRXSJy13ixO
+                     tbAQaH++DjDa+GZ0w+eUpSLegMdW7uXdU2Hk
+                     hWdPoZOTg7+KnjlyJ6uJ+ZozaxYYCpwZrot1
+                     mP9Jnot6VU58PurwJ8YB2MnQR5rylWYZk84L
+                     UNoJq8FohGy3/f+Fj1fp4pZ3chM= )
+             86400 RRSIG DNSKEY 5 2 86400 20050514153903 (
+                     20050414153903 38420 example.com.
+                     awjJL2h6NNhfZ/4HX0iDMJbIYPr+blIaaeK/
+                     xEr91vP6myOd2S7dWypZc+qbrm5ew5v6n/OV
+                     8UC69u/MZPTBEetRLhi1+D++YIZ7GXmdtUjL
+                     A+js30Pgb2cR5cJRDK8yCqi5SlxhNxwO713V
+                     kSl/1rlKy+LSl8nQ6XJt8/pkjDM= )
+_ldap._tcp.example.com . 86400 IN SRV 5 2 235 www.example.com.
+             86400 RRSIG SRV 5 4 86400 20050514153903 (
+                     20050414153903 38420 example.com.
+                     CnmMTizzSerS4ePF0NANviTRFEdJ4OKUwaBu
+                     JZiPmX2ZkvQQ2ZWEl6Vvxu7NTyhi60YRvQWt
+                     yMKSOL1LqkT61XfN8v7XWscfZTx8qb6K5qu4
+                     n+3xghHRDPBn6yHCOu0vaC4iZeEZyx0W04jf
+                     ce+mtaVkBq5p2dhsH3/t+Msw5qk= )
+             10800 NSEC mail.example.com. SRV RRSIG NSEC
+             10800 RRSIG NSEC 5 4 10800 20050514153903 (
+                     20050414153903 38420 example.com.
+                     zC3hXQX82oT9yYEH/OUtPukyTglTat4MxwQ4
+                     p4VEWP8qPoEKP3hhtjz4rt1ylTdpLWH6tLNS
+                     NFCE/Mdol6kjspfVXRcsL2MLVdRNOKLeqjhl
+                     U8Sdut2kjX0nBFp4hAcicALzaN7/PpFGga0f
+                     /KnKcD7aM5a/gr0zZBHjswszGt4= )
+mail.example.com. 86400 IN A 192.168.2.3
+             86400 RRSIG A 5 3 86400 20050514153903 (
+                     20050414153903 38420 example.com.
+                     W7QBEKLgh6v7AK6T30KQ4tgSgO4RCrddAN61
+                     cD8MYUrq5l1W7I1QgAxdT8zAlADiUjafnnlk
+                     QNM4vJnToS3BxprhZ2mFJwiTWV3DIGBqCnPJ
+                     c62pue0M+DmsCEBKxbVUZOKf2nW5bim+GIqH
+                     Csxfiy0XqDRgzDF6ZZUo/njMqcA= )
+             10800 NSEC mail1.example.com. A RRSIG NSEC
+             10800 RRSIG NSEC 5 3 10800 20050514153903 (
+                     20050414153903 38420 example.com.
+                     XiHOXLyR7uC9MvJS3m8AMVtY6QtgSdhy6tId
+                     uaylkHjt/EjolKuZdy1F71yP1rICWDdcWgy2
+                     eKSKVZy97RfKMlRKBbWruBspmfBfKHSUvl27
+                     s0wehJ3n7H40D5xE0/tzJrHnL1tjHkaqeVpe
+                     V16vLTVUUbday9HeRl/388HU10k= )
+mail1.example.com. 86400 IN A 192.168.2.4
+             86400 RRSIG A 5 3 86400 20050514153903 (
+                     20050414153903 38420 example.com.
+                     lRounAjKet/54jW1oYxoF2LX0xw0yjoVfKX8
+                     wNuVKXKv+wW+VoLLjToM8IgI0+AVbIacRbpx
+                     PmHgr2CVZo1wRT1guaDCgejk1qI5uYuy9bgD
+                     EO2gjaPL2nXYyjTcU3xNOcsWsHLp5PT72Kps
+                     bIlGQDAry/xcQSk8mF2scDVj9mc= )
+             10800 NSEC ns1.example.com. A RRSIG NSEC
+             10800 RRSIG NSEC 5 3 10800 20050514153903 (
+                     20050414153903 38420 example.com.
+                     VMkPYVtLdiRO6sQFseMss3Xn56WSPRkeYF/q
+                     WqRLEMbPv5GrsafzQdExKmj2XF0OJKmbgz/p
+                     uhyGKSdzmLcZosjg+hFZnrlMI2kBP5pJ67dN
+                     AhZynF+S+A1hymxWQ9lT2+h4zCgW2zEDhy+J
+                     PkMi4ra9voDWau3COsRmxcO38Eg= )
+ns1.example.com. 86400 IN A 192.168.2.6
+             86400 RRSIG A 5 3 86400 20050514153903 (
+                     20050414153903 38420 example.com.
+                     mQioT8nfRq6dOyFvmR7k09dU8wohWU0E35ki
+                     LTKPrQON1ERi/dhI/YhXtqBP4GDAAbBBOCQU
+                     AUJFJP7lnV3oP5FP5YuTvL4eHBoSVcWpdhFG
+                     bSV1OejH7CN6e/QACksNmMo7jwQ9woSZ6n5y
+                     fpOiPnGUa39awWK+WXegz1UhZfo= )
+             10800 NSEC ns2.example.com. A RRSIG NSEC
+             10800 RRSIG NSEC 5 3 10800 20050514153903 (
+                     20050414153903 38420 example.com.
+                     DJmXHGjUZCkbMOUkVSCxFe7eouHr2GHjKGhl
+                     7P4etVVkhNMafMBfrsy+J7/Nf4vfbYKCzDEa
+                     ARmN1gWBTW/xt8diFk8GKdhsZoiGDkLG0g12
+                     rpNhwSOwJK7fdblFSoEZyCrwMQYdEUpdfsGY
+                     Xq+7IbdUR9gMFW+ecNcKA9jtpYA= )
+ns2.example.com. 86400 IN A 192.168.23.23
+             86400 RRSIG A 5 3 86400 20050514153903 (
+                     20050414153903 38420 example.com.
+                     tvqos7ZVNO4ZWGWDS+uVqj4juNt+N+uNHem3
+                     bIOaKAmHKamQzE9ecDfX2HFTO2Pr6OF7v6JQ
+                     q9yPoVtGvsYrYrZM7jLTaPdnUhko34KpSThq
+                     5SU2OCSUqkIgtYVCMxM18QtnZ4tsy9883OgC
+                     9OJTxOk0HdjgYfxLRDu01AEZfww= )
+             10800 NSEC www.example.com. A RRSIG NSEC
+             10800 RRSIG NSEC 5 3 10800 20050514153903 (
+                     20050414153903 38420 example.com.
+                     OxKKdDdRi9ICISwF9Eo4vBH7IkF+Khn8K2yC
+                     1TFBpW2CeTAnn67Ngxw3mnNuD8Jh+1k7lFWJ
+                     dcvI3+5COyc0LnL2+7ncuUg+OMv7kSYOiSaW
+                     GlMXKHqzh9rZH8NYraCeqFQu4Zmh99w5w6NH
+                     W9JwJOxbQU6hkq8nq8274owj/9M= )
+www.example.com. 86400 IN A 10.1.2.1
+             86400 IN A 172.16.2.1
+             86400 RRSIG A 5 3 86400 20050514153903 (
+                     20050414153903 38420 example.com.
+                     MQK0nxT6+SO1du5gUcW71CRNDYlHgp4Wddqx
+                     py/m92dJwl1XFMOqcNVcuhz9YmCV+zn59vi6
+                     Hj5pWpvFRVE5VsrDYtPosKkxyUHS0SeVJkfg
+                     7jd33Mz771i/jtQdvkr4Ti3DTcNEBBYZvF59
+                     sA+ncD56AwG+8NEgxfKJt59d7wE= )
+             10800 NSEC example.com. A RRSIG NSEC
+             10800 RRSIG NSEC 5 3 10800 20050514153903 (
+                     20050414153903 38420 example.com.
+                     JsP+o3gqJgopHosuT1QK+F9z/uXigSv+2Ntg
+                     Q1GRmBrtUawxdiaX7jCnFOvUKLDJcPDFv2cU
+                     ceBLVxhpfu9KYQZYghXAR8SvW4XKC0zwMJ1s
+                     HXtvU8Zx/R+S0j1FnfkndP8VXwPn2Z92ai+Q
+                     AuOAWELN837tnnFMHIn67sUId7w= )

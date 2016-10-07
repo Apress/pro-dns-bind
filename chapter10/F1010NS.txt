@@ -1,0 +1,34 @@
+// named.conf fragment
+logging{
+    channel normal_log {
+    file "/var/log/named/normal.log" versions 3 size 2m;
+    severity error;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    channel security_log { // streamed security log
+    file "/var/log/named/security.log" versions 3 size 2m;
+    severity info;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category default{
+    normal_log;
+    };
+    category security{
+    security_log; 
+    };
+};
+options {
+....
+    allow-transfer {none;}; // none by default
+....
+};
+....
+zone "example.com in{
+....
+    allow-transfer {10.1.2.5;}; // this zone only
+....
+};

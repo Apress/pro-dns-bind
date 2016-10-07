@@ -1,0 +1,12 @@
+; fragment rewritten to use $ORIGIN substitution
+$TTL 2d    ; default TTL for zone
+$ORIGIN example.com.
+; Start of Authority RR defining the key characteristics of the zone (domain)
+@         IN      SOA   ns1 hostmaster (
+                        2003080800 ; se = serial number
+                        12h         ; ref = refresh
+                        15m        ; ret = update retry
+                        3w         ; ex = expiry
+                        2h         ; min = minimum
+                        )
+

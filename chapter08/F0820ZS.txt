@@ -1,0 +1,7 @@
+; zone fragment for example.com
+$ORIGIN example.com.
+...
+@      IN   A       192.168.0.2
+       IN   TXT "v=spf1 a -all"
+....
+

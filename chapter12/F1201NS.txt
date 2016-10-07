@@ -1,0 +1,9 @@
+/* C-style comment format needs opening and closing markers
+** but allows multiple lines or */
+/* single lines or */
+zone /* in-line comment does not terminate line */ in {some zone statements};
+// C++-style comments have single line format, no closing required
+...some statement; // comment ends this line
+# SHELL/PERL-style comments have single lines, no closing required
+   some statement; # comment ends this line
+

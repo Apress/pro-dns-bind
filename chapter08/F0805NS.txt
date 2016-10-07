@@ -1,0 +1,6 @@
+// named.conf file fragment
+
+zone "example.com" in{
+                type master;
+                file "master.example.com";
+};

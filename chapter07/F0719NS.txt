@@ -1,0 +1,7 @@
+// BIND named.conf fragment
+// use of forward in a zone clause
+zone "example.net" in{
+  type forward;
+  forwarders{10.0.0.3;};
+  forward only;
+};

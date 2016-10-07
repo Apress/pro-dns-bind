@@ -1,0 +1,15 @@
+// dense single line layout style
+zone "example.com" {type slave; file "sec.example.com"; masters {10.0.0.1;};};
+// multiple line layout style
+zone "example.com" {
+   type slave;
+   file "slave.example.com";
+   masters {10.0.0.1;};
+};
+// a slightly confusing hybrid layout style
+zone "example.com" {
+   type slave;
+   file "slave.example.com";
+   masters {10.0.0.1;}; };
+
+

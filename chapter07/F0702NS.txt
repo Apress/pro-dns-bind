@@ -1,0 +1,6 @@
+// BIND named.conf fragment
+zone "localhost" in{
+  type master;
+  file "master.localhost";
+  allow-update {none;}; // optional
+};

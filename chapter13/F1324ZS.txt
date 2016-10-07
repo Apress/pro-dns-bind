@@ -1,0 +1,8 @@
+; www.example.com and example.com access
+$TTL 2d ; zone default = 2 days
+$ORIGIN example.com.
+; resolves example.com to an IP
+@          IN      A      192.168.254.8
+           IN      A      192.168.254.9
+           IN      A      192.168.254.10
+www        IN      CNAME  example.com.

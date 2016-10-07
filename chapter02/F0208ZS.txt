@@ -1,0 +1,6 @@
+ns1           IN      A       192.168.254.2
+mail          IN      A       192.168.254.4
+joe           IN      A       192.168.254.6
+; this A RR has the same IPv4 address as ns1 above
+www           IN      A       192.168.254.2
+

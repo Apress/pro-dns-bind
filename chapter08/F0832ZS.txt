@@ -1,0 +1,7 @@
+; zone file for example.com
+$TTL 2d ; zone default = 2 days
+$ORIGIN example.com.
+@               IN   MX  10  mail.example.com.
+*               IN   MX  10  mail.example.com.
+
+

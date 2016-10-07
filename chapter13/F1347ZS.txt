@@ -1,0 +1,12 @@
+; zone file fragment for example.com
+$TTL 2d ; zone TTL default = 2 days or 172800 seconds
+$ORIGIN example.com.
+@      IN      SOA   ns.example.net. hostmaster.example.com. (
+               2003080800 ; serial number
+               1d12h      ; refresh =  1 day 12 hours
+               15m        ; update retry = 15 minutes
+               3w12h      ; expiry = 3 weeks + 12 hours
+               2h20m      ; minimum = 2 hours + 20 minutes
+               )
+        IN     NS    ns.example.net. ;name servers
+        IN     NS    ns.example.org.

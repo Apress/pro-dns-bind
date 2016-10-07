@@ -1,0 +1,25 @@
+; simple reverse mapping zone file for example.com
+$TTL 2d    ; default TTL for zone
+$ORIGIN 254.168.192.IN-ADDR.ARPA.
+; Start of Authority (SOA) record defining the key characteristics of the zone (domain) 
+@         IN      SOA   ns1.example.com. hostmaster.example.com. (
+                        2003080800 ; sn = serial number
+                        12h         ; refresh
+                        15m        ; retry
+                        3w         ; expiry
+                        2h         ; min = minimum
+                        )
+; name servers Resource Records for the domain
+          IN      NS      ns1.example.com.
+; the second name servers is
+; external to this zone (domain).
+          IN      NS      ns2.anotherdomain.com.
+; PTR RR maps an IPv4 address to a host name
+2         IN      PTR     ns1.example.com.
+.....
+4         IN      PTR     mail.example.com.
+.....
+16        IN      PTR     joe.example.com.
+17        IN      PTR     www.example.com.
+....
+

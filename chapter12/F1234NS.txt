@@ -1,0 +1,21 @@
+options {
+    ....
+    sortlist {
+     192.168.4/24;  // 1st client IP selection
+     {10.2/16;   // 1st preference
+      172.17.4/24;  // 2nd preference
+     };
+     192.168.5/24;  // 2nd client IP selection
+     {192.168.4/24;   // 1st preference
+      172.18/24;  // 2nd preference
+      10.2/16;  // 3rd preference
+     };
+    };
+};
+
+
+
+
+
+
+

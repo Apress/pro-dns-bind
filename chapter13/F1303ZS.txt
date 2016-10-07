@@ -1,0 +1,7 @@
+$ORIGIN us.example.com.
+...
+mail       IN      A   192.168.35.12
+; expands to mail.us.example.com.
+$INCLUDE /var/named/zones/sub.example.com ; absolute path no $ORIGIN
+ftp        IN      A   192.168.35.16
+; expands to ftp.us.example.com.

@@ -1,0 +1,5 @@
+# add following line if not present
+named_enable="YES"
+# the line below must replace the line named_program="/usr/sbin/named' if present
+# otherwise add it
+named_program="/usr/local/sbin/named"

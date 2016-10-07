@@ -1,0 +1,8 @@
+; zone file fragment
+$TTL 2d ;172800 seconds
+$ORIGIN example.com.
+....
+    3w  IN  MX 10 mail.example.com.
+    4h  IN  MX  10 mail.example.com.
+        IN  MX  20 mail.example.net.
+....

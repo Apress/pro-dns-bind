@@ -1,0 +1,13 @@
+logging {
+   ....
+    channel example-update {
+    file "/var/log/named/update.log" versions 3 size 1m;
+    severity info;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category update{
+    example-update;
+    };
+};

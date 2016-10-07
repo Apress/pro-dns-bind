@@ -1,0 +1,19 @@
+; zone fragment for example.com
+; name servers in the same zone
+$TTL 2d ; default TTL is 2 days
+$ORIGIN example.com.
+example.com.  IN     SOA   ns1.example.com. hostmaster.example.com. (
+               2003080800 ; serial number
+               3h         ; refresh =  3 hours
+               15M        ; update retry = 15 minutes
+               3W12h      ; expiry = 3 weeks + 12 hours
+               2h20M      ; minimum = 2 hours + 20 minutes
+               )
+              IN      NS     ns1  ; unqulaified name
+; the preceding line is functionally the same as the line that follows
+; example.com. IN      NS     ns1.example.com.
+; at least two name servers must be defined
+              IN      NS     ns2.example.com. ;FQDN
+; the in-zone name server(s) should have an A record
+ns1           IN      A      192.168.0.3
+ns2           IN      A      192.168.0.3

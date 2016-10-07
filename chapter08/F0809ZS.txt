@@ -1,0 +1,32 @@
+; zone file fragment for example.net
+$TTL 2d ; zone default TTL = 2 days
+$ORIGIN 199.168.192.IN-ADDR.ARPA.
+@            IN  SOA   ns1.example.net. hostmaster.example.net. (
+                              2003080800 ; serial number
+                              2h         ; refresh
+                              15m        ; update retry
+                              2w         ; expiry
+                              3h         ; minimum
+                              )
+              IN  NS      ns1.example.net.
+              IN  NS      ns2.example.net.
+; definition of other IP address 0 - 63
+....
+; definition of our target 192.168.199.64/26 subnet
+; name servers for subnet reverse map
+64/26         IN  NS  ns1.example.com.
+64/26         IN  NS  ns2.example.com.
+; the preceding could have been written as
+; 64/26.199.168.192.IN-ARDDR.ARPA.  IN NS ns2.example.com.
+; IPs addresses in the subnet - all need to be defined
+; except 64 and 127 since they are the subnets multicast
+; and broadcast addresses not hosts/nodes
+65            IN  CNAME   65.64/26.199.168.192.IN_ADDR.ARPA. ;qualified
+66            IN  CNAME   66.64/26 ;unqualified name
+67            IN  CNAME   67.64/26
+....
+125           IN  CNAME   125.64/26
+126           IN  CNAME   126.64/26
+; end of 192.168.199.64/26 subnet
+.....
+; other subnet definitions

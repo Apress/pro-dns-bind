@@ -1,0 +1,35 @@
+// named.conf fragment for ns1.example.net
+logging{
+    channel normal_log {
+    file "/var/log/named/normal.log" versions 3 size 2m;
+    severity error;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    channel dnssec_log { // streamed dnssec log
+    file "/var/log/named/dnssec.log" versions 3 size 2m;
+    severity debug 3;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+    };
+    category default{
+    normal_log;
+    };
+    category dnssec{
+    dnssec_log;
+    };
+};
+options {
+   ....
+   directory "/var/named";
+   dnssec-enable yes;
+   allow-transfer {"none"};
+   allow-update {"none";};
+   ....
+};
+trusted-keys{
+   "example.com" 257 3 5 "1WnVhGKV1I6T01x+u4uNoe1/uocNOQ==";
+};
+....

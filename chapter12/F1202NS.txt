@@ -1,0 +1,14 @@
+// dense single-line style
+zone "example.com" {type slave; file "slave.example.com"; masters {10.0.0.1;};};
+//  single-statement-per-line style
+zone "example.com" {
+   type slave;
+   file "slave.example.com";
+   masters {10.0.0.1;};
+   };
+// spot the difference
+zone "example.com" {
+   type slave;
+   file "sec.slave.com";
+   masters {10.0.0.1;}; };
+

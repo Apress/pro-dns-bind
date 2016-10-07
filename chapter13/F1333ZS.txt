@@ -1,0 +1,31 @@
+; zone fragment for example.com
+; subdomain name servers
+$TTL 2d ; zone default = 2 days or 172800 seconds
+$ORIGIN example.com.
+example.com. IN     SOA   ns1.example.com. hostmaster.example.com. (
+               2003080800 ; serial number
+               2h         ; refresh =  2 hours
+               15M        ; update retry = 15 minutes
+               3W12h      ; expiry = 3 weeks + 12 hours
+               2h20M      ; minimum = 2 hours + 20 minutes
+               )
+....
+; mail server for main domain
+              IN      MX 10  mail.example.com.
+; A record for mail server earlier
+mail          IN      A      192.168.0.5
+; other domain level hosts and services
+....
+; subdomain definitions
+$ORIGIN us.example.com.
+              IN      MX 10  mail
+; preceding record could have been written as
+; us.example.com.   IN  MX 10 mail.us.example.com.
+; optional - define the main mail server as backup
+              IN      MX 20 mail.example.com.
+; A record for subdomain mail server
+mail          IN      A      10.10.0.29
+; the preceding record could have been written as
+; mail.us.example.com. A 10.10.0.29 if it is less confusing
+....
+; other subdomain definitions as required

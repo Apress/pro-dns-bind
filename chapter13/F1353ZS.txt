@@ -1,0 +1,14 @@
+; zone file fragment for example.com
+$TTL 2d ; zone default = 2 days
+$ORIGIN example.com.
+....
+@          IN   WKS  192.168.254.2 TCP telnet http
+           IN   WKS  192.168.254.3 {
+                  telnet
+                  smptp   ;some comment about this service
+                  ftp
+                }
+....
+bill       IN   192.168.254.2
+fred       IN   192.168.254.2
+...

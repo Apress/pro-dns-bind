@@ -1,0 +1,30 @@
+// Master & Caching Name Server for Example, INC.
+// Recommended that you always maintain a change log in this file as shown here
+// CHANGELOG:
+// 1. 9 july 2005 INITIALS or NAME
+//  a. did something
+// a. 23 july 2005 INITIALS or NAME
+//  a. did something again
+//  b. another change
+// options clause defining the server-wide properties
+options {
+  // all relative paths use this directory as a base
+  directory "/var/named";
+  // version statement for security to avoid hacking known weaknesses
+  // if the real version number is published
+  version "not currently available";
+};
+// logging clause
+// log to /var/log/named/example.log all events from info UP in severity (no debug)
+// uses 3 files in rotation swaps files when size reaches 250K
+// failure messages up to this point are in syslog e.g. /var/log/messages
+//
+logging {
+  channel example_log{
+   file "/var/log/named/example.log" versions 3 size 250k;
+   severity info;
+ };
+  category default{
+  example_log;
+ };
+};

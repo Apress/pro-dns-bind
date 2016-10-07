@@ -1,0 +1,27 @@
+// named.conf DLV fragment
+...
+options {
+   ....
+   dnssec-lookaside "." trusted-anchor "dlv.verisignlabs.com";
+   ....
+};
+trusted-keys{
+dlv.verisignlabs.com. 257 3 5
+                 "AwEAAbw2HZErA6PpTSVdEbdvY1I1ly3gTFAhJPAsC7oa
+                  tIr/P3hDqz7sUjDy4rVHQPNjKvQMv2v0AqTyrykry02l
+                  9WGmbKZjsXyK219AiAHvSC44TsiskIN8IP28KkM1CWg+
+                  108FbPJGVbZ3OH1leRapnCCi2Z5q0dhecgFQWag/FupH
+                  oqN7snieYsUdby/9ZO9dLDdQeL9xJn1CVtiMcxfB5/ju
+                  KJ/V9bF7WIsdLKlootqniS42cjsyGGwxsfZxHQ3mH/GO
+                  df1KnGs8ENBnpxSytJk4q0gYP5AkNAPTG0j1Kdma2f9v
+                  i6wZAIYVkcQPKusBTYbUclFrIXnKGtPHH3Cny1s=";
+dlv.verisignlabs.com. 257 3 5
+                 "AQPAQR5KGn12Q/IPhkGMv6ZlAI57rw44/7csvZjuOvWD
+                  bFuOG0CwwiRVa7FTh2MQIkCgUjqJ2ZTKTAyBMSadqFoV
+                  Cc/CI6CFuQN+inmNNkGZsn5lE8qIoJkMIyl+/v0/0whL
+                  OCurFh0buyNJKouKqoO9wi3p0KrWQRkbnLWlcqeqfsAN
+                  Gpxi27TveSm3x3pS8f9ZXHQvz5yFethXitHDQuYl+apF
+                  ODsZ/TfXE9dl7+oR+5hzbzIMbPBByuqna4/ZFCcwJL2W
+                  hEArHFQSpkzUaVX2ugBZ48H0M9XqG8aUCkElRAkxrawf
+                  5x3bm6y3UmoQPvTQL8T71BZ6Cku84FyDGUoh";
+};
